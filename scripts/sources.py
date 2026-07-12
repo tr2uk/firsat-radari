@@ -179,10 +179,15 @@ def _fetch_rother_assets():
             if any(n in h for n in names): return i
         return None
     i_name = col("property street address", "address")  # tam adres (postcode'lu)
-    i_alt = col("property")                              # kısa ad
+    # açıklayıcı ad sütunu: tam 'property' başlığı (referans-kod/adres sütunlarını dışla)
+    i_alt = next((i for i, h in enumerate(hdr)
+                  if h == "property" or ("property" in h and not any(
+                      w in h for w in ("reference", "custom", "address")))), None)
     i_hold = col("holding", "tenure")
     if i_name is None:
         i_name = i_alt
+    if i_alt is None:
+        i_alt = i_name
     DEV_KW = ("land", "site", "plot", "depot", "yard", "former", "garage")
     known = sorted(TOWN_DISTRICT.keys(), key=len, reverse=True)
     out = []
