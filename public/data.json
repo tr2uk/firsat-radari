@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-12 08:24 UTC",
+  "generated": "2026-07-12 08:59 UTC",
   "count": 67,
   "source": "live",
   "items": [
@@ -86,7 +86,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 68,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -96,7 +96,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "küçük/sınırlı varlık"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -111,7 +112,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 80,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -121,7 +122,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "geliştirmeye açık arazi"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -136,7 +138,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 80,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -146,7 +148,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "geliştirmeye açık arazi"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -211,7 +214,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 80,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -221,7 +224,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "geliştirmeye açık arazi"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -236,7 +240,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 80,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -246,7 +250,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "geliştirmeye açık arazi"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -261,7 +266,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 80,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -271,7 +276,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "geliştirmeye açık arazi"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -336,7 +342,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 80,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -346,7 +352,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "geliştirmeye açık arazi"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -361,7 +368,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 68,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -371,7 +378,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "küçük/sınırlı varlık"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -386,7 +394,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 68,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -396,7 +404,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "küçük/sınırlı varlık"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -411,7 +420,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 80,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -421,7 +430,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "geliştirmeye açık arazi"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -436,7 +446,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 80,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -446,7 +456,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "geliştirmeye açık arazi"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -461,7 +472,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 68,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -471,7 +482,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "küçük/sınırlı varlık"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -486,7 +498,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 68,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -496,7 +508,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "küçük/sınırlı varlık"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -511,7 +524,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 80,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -521,7 +534,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "geliştirmeye açık arazi"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -536,7 +550,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 68,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -546,7 +560,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "küçük/sınırlı varlık"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -561,7 +576,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 68,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -571,7 +586,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "küçük/sınırlı varlık"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -586,7 +602,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 80,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -596,7 +612,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "geliştirmeye açık arazi"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -611,7 +628,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 80,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -621,7 +638,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "geliştirmeye açık arazi"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -636,7 +654,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 80,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -646,7 +664,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "geliştirmeye açık arazi"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -661,7 +680,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 80,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -671,7 +690,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "geliştirmeye açık arazi"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -686,7 +706,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 80,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -696,7 +716,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "geliştirmeye açık arazi"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -711,7 +732,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 80,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -721,7 +742,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "geliştirmeye açık arazi"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -736,7 +758,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 80,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -746,7 +768,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "geliştirmeye açık arazi"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -761,7 +784,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 80,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -771,7 +794,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "geliştirmeye açık arazi"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -786,7 +810,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 80,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -796,7 +820,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "geliştirmeye açık arazi"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -811,7 +836,7 @@
       "rateable": null,
       "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": 74,
+      "score": 80,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
@@ -821,7 +846,8 @@
       "score_factors": [
         "boş/distressed/ucuz durum",
         "geliştirme arazisi",
-        "kaynak: Konsey Varlık Kaydı"
+        "kaynak: Konsey Varlık Kaydı",
+        "geliştirmeye açık arazi"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },

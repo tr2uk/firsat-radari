@@ -132,6 +132,13 @@ def score(rec):
             s += W["deadline_soon"]; why.append("son tarih yakın")
     if rec.get("ch_number"):
         s += W["ch_matched"]; why.append("CH adres eşleşti")
+    # Konsey arazisi içi ayrıştırma (aynı kaynak içinde önceliklendirme)
+    if rec.get("source") == "Konsey Varlık Kaydı":
+        t = (rec.get("title", "") or "").lower()
+        if any(k in t for k in ["land", "site", "plot", "field", "development", "garages"]):
+            s += 6; why.append("geliştirmeye açık arazi")
+        elif any(k in t for k in ["garage", "convenience", "kiosk", "shelter", "toilet", "store", "hut"]):
+            s -= 6; why.append("küçük/sınırlı varlık")
     rec["score_factors"] = why
     return max(SCORE_MIN, min(SCORE_MAX, s))
 
