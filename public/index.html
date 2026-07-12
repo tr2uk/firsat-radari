@@ -965,17 +965,43 @@ function _buildFilters(){
   document.getElementById("townBox").innerHTML=html;
   document.getElementById("incBox").innerHTML=INC_TYPES.map(function(x){return '<label class="chk"><input type="checkbox" data-f="inc" value="'+x[0]+'"> '+x[1]+'</label>';}).join("");
 }
-(async function loadLive(){
-  try{
-    var r=await fetch("data.json",{cache:"no-store"}); if(!r.ok) return;
-    var live=await r.json(); var rows=Array.isArray(live)?live:(live.items||[]);
-    if(rows.length){
-      DATA=rows; _enrich(DATA); _buildFilters(); render();
-      var el=document.querySelector("header .demo-chip");
-      if(el){ el.textContent="CANLI"; el.style.background="#0f9d8f"; el.style.color="#fff";
-        el.title="data.json canli veri"+((!Array.isArray(live)&&live.generated)?(" - "+live.generated):""); }
-    }
-  }catch(e){}
+// --- Şifre kapısı + şifreli veri ---
+function _b64(s){ return Uint8Array.from(atob(s), c=>c.charCodeAt(0)); }
+async function _decrypt(enc, password){
+  const salt=_b64(enc.salt), iv=_b64(enc.iv), ct=_b64(enc.ciphertext);
+  const bk=await crypto.subtle.importKey("raw", new TextEncoder().encode(password), "PBKDF2", false, ["deriveKey"]);
+  const key=await crypto.subtle.deriveKey({name:"PBKDF2",salt,iterations:enc.iterations||250000,hash:"SHA-256"}, bk, {name:"AES-GCM",length:256}, false, ["decrypt"]);
+  const pt=await crypto.subtle.decrypt({name:"AES-GCM",iv}, key, ct);
+  return JSON.parse(new TextDecoder().decode(pt));
+}
+async function _unlock(password){
+  const r=await fetch("data.enc",{cache:"no-store"});
+  if(!r.ok) throw new Error("data.enc yok");
+  const live=await _decrypt(await r.json(), password);   // yanlış şifre -> exception
+  const rows=Array.isArray(live)?live:(live.items||[]);
+  DATA=rows; _enrich(DATA); _buildFilters(); render();
+  const el=document.querySelector("header .demo-chip");
+  if(el){ el.textContent="CANLI"; el.style.background="#0f9d8f"; el.style.color="#fff"; }
+}
+(function gate(){
+  const ov=document.createElement("div"); ov.id="pwgate";
+  ov.style.cssText="position:fixed;inset:0;z-index:5000;background:#0f2438;display:flex;align-items:center;justify-content:center";
+  ov.innerHTML='<div style="background:#fff;border-radius:14px;padding:28px;max-width:340px;width:90%;text-align:center;font-family:inherit">'
+    +'<h2 style="margin:0 0 6px;font-size:18px;color:#0f2438">Fırsat Radarı</h2>'
+    +'<p style="margin:0 0 14px;color:#647388;font-size:13px">Erişim için şifre girin</p>'
+    +'<input id="pwin" type="password" placeholder="Şifre" style="width:100%;padding:10px;border:1px solid #e3e8f0;border-radius:8px;font-size:14px">'
+    +'<div id="pwerr" style="color:#dc2626;font-size:12px;margin-top:8px;display:none">Şifre hatalı</div>'
+    +'<button id="pwbtn" style="margin-top:12px;width:100%;padding:10px;border:0;border-radius:8px;background:#0f2438;color:#fff;font-weight:700;cursor:pointer">Gir</button></div>';
+  document.body.appendChild(ov);
+  const go=async()=>{ const pw=document.getElementById("pwin").value;
+    document.getElementById("pwerr").style.display="none";
+    try{ await _unlock(pw); try{sessionStorage.setItem("fr_pw",pw);}catch(e){} ov.remove(); }
+    catch(e){ document.getElementById("pwerr").style.display="block"; } };
+  document.getElementById("pwbtn").onclick=go;
+  document.getElementById("pwin").addEventListener("keydown",e=>{ if(e.key==="Enter") go(); });
+  document.getElementById("pwin").focus();
+  let saved=null; try{saved=sessionStorage.getItem("fr_pw");}catch(e){}
+  if(saved){ _unlock(saved).then(()=>ov.remove()).catch(()=>{}); }
 })();
 </script>
 </body>

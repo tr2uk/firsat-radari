@@ -52,6 +52,13 @@ jobs:
           ALERT_TO: ${{ secrets.ALERT_TO }}
         run: python scripts/alerts.py
 
+      # Şifreleme deploy'dan ÖNCE ve alerts'ten SONRA (alerts.py düz data.json okur):
+      # düz metin public/data.json silinir, yerine AES-256-GCM public/data.enc yüklenir.
+      - name: Veriyi şifrele
+        env:
+          SITE_PASSPHRASE: ${{ secrets.SITE_PASSPHRASE }}
+        run: python scripts/encrypt_data.py
+
       - name: Pages yapılandır
         uses: actions/configure-pages@v5
 

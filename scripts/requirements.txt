@@ -2,3 +2,4 @@
 # Offline test (python build_data.py --offline) yalnızca stdlib kullanır, bunlara ihtiyaç duymaz.
 requests>=2.31
 openpyxl>=3.1        # Rother varlık kaydı .xlsx okumak için
+cryptography>=42     # public/data.json -> AES-256-GCM şifreleme (encrypt_data.py)

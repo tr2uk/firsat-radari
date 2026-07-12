@@ -3,3 +3,6 @@ __pycache__/
 scripts/.seen_ids.json
 .venv/
 .DS_Store
+# Şifre koruması: düz metin veri repoda TUTULMAZ; data.enc CI'da üretilir/yüklenir
+public/data.json
+public/data.enc
