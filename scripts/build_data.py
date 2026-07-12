@@ -19,6 +19,61 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_OUT = os.path.normpath(os.path.join(HERE, "..", "public", "data.json"))
 
 
+# === Dayanıklılık: bir kaynak bu tur 0 dönerse son iyi yayından "bayat" taşı ===
+EXPECTED_SOURCES = ["Belediye (Canlı)", "Konsey Varlık Kaydı", "Planlama Başvurusu",
+                    "Land Registry", "Gazette (Tasfiye)", "Auction Kataloğu"]
+STALE_MAX_DAYS = 14
+LIVE_DATA_URL = os.environ.get("LIVE_DATA_URL",
+                               "https://tr2uk.github.io/firsat-radari/data.json")
+
+def _age_days(d):
+    try:
+        return (datetime.date.today() - datetime.date.fromisoformat(str(d)[:10])).days
+    except Exception:
+        return 0
+
+def _load_last_good(offline):
+    if offline:
+        return None
+    import requests
+    try:
+        r = requests.get(LIVE_DATA_URL, timeout=20)
+        if r.status_code == 200:
+            return r.json()
+    except Exception as e:
+        print("  son-iyi veri çekilemedi:", e)
+    return None
+
+def carry_over_stale(items, offline):
+    """Bu tur 0 dönen kaynakların kayıtlarını önceki iyi yayından taşır (bayat işaretli)."""
+    prev = _load_last_good(offline)
+    if not prev or not prev.get("items"):
+        return items
+    counts = {}
+    for it in items:
+        counts[it.get("source")] = counts.get(it.get("source"), 0) + 1
+    carried = 0
+    for src in EXPECTED_SOURCES:
+        if counts.get(src, 0) > 0:
+            continue  # bu tur canlı veri geldi
+        for it in prev["items"]:
+            if it.get("source") != src:
+                continue
+            ss = it.get("stale_since") or str(prev.get("generated", ""))[:10]
+            if _age_days(ss) > STALE_MAX_DAYS:
+                continue  # çok eski -> budandı
+            it = dict(it)
+            it["stale"] = True
+            it["stale_since"] = ss
+            if "önceki taramadan" not in it.get("why", ""):
+                it["why"] = it.get("why", "") + " · önceki taramadan (kaynak bu tur yanıt vermedi)."
+            items.append(it)
+            carried += 1
+    if carried:
+        print(f"  dayanıklılık: {carried} bayat kayıt taşındı (0 dönen kaynaklar)")
+    return items
+
+
 # === Fırsat skoru — ağırlıklı ve ayarlanabilir kriterler ===
 # Bu ağırlıkları kendi stratejine göre değiştir; skor bunları toplar ve 50-97'ye sıkıştırır.
 WEIGHTS = {
@@ -115,6 +170,9 @@ def build(offline=True):
             items += got
         except Exception as e:
             print(f"  {fn.__name__}: HATA {e}", file=sys.stderr)
+
+    # Dayanıklılık: bu tur 0 dönen kaynakları önceki iyi yayından bayat taşı
+    items = carry_over_stale(items, offline)
 
     # Companies House ile tasfiye kayıtlarını kayıtlı ofis adresi/konuma bağla
     try:

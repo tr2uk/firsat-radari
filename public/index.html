@@ -559,6 +559,7 @@ function card(d){
       <div class="why"><b>${d.real?"Neden avantajlı?":"Neden fırsat?"}</b> ${d.why}</div>
       <div class="subrow">
         <span class="ilan">İlan: ${fmtDate(d.date)}</span>
+        ${d.stale?'<span class="ddl ddl-past">önceki tarama</span>':''}
         ${ddlChip(d)}
         ${d.link?`<a class="srclink" href="${d.link}" target="_blank" rel="noopener">Kaynağı Aç ↗</a>`:""}
       </div>
