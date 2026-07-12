@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-12 07:13 UTC",
+  "generated": "2026-07-12 08:24 UTC",
   "count": 67,
   "source": "live",
   "items": [
@@ -23,7 +23,7 @@
       "contact": "property.estates@eastsussex.gov.uk",
       "id": 1001,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "gerçek belediye listesi (CANLI)"
       ],
       "link": "https://www.eastsussex.gov.uk/media/qmbpjktu/lewes-county-hall-offices.pdf"
     },
@@ -47,7 +47,7 @@
       "contact": "property.estates@eastsussex.gov.uk",
       "id": 1002,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "gerçek belediye listesi (CANLI)"
       ],
       "link": "https://www.eastsussex.gov.uk/media/c0ibdmmt/pacific-house-office-suites-to-let-current.pdf"
     },
@@ -71,7 +71,7 @@
       "contact": "property.estates@eastsussex.gov.uk",
       "id": 1003,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "gerçek belediye listesi (CANLI)"
       ],
       "link": "https://www.eastsussex.gov.uk/media/03dii3te/first-floor-west-sackville-house-lewes.pdf"
     },
@@ -79,23 +79,24 @@
       "title": "1 Cyprus Place, (inc Garage no.2)",
       "town": "Rye",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Karma Kullanım",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1004,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -103,23 +104,24 @@
       "title": "4 Wellington House, Auckland Close, Bexhill",
       "town": "Bexhill-on-Sea",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Arsa",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1005,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -127,23 +129,24 @@
       "title": "Allotment Land at Yates Close, Camber",
       "town": "Rye",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Arsa",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1006,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -151,23 +154,24 @@
       "title": "Autodrive Depot, Terminus Road, Bexhill",
       "town": "Bexhill-on-Sea",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Karma Kullanım",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1007,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -175,23 +179,24 @@
       "title": "Broad Oak Depot, Broad Oak Country Park, (Unit 3&4, Old Granary Barn)",
       "town": "Bexhill-on-Sea",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Karma Kullanım",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1008,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -199,23 +204,24 @@
       "title": "Car Park, Land at Gibbetts Marsh, Ferry Rd, Rye",
       "town": "Rye",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Arsa",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1009,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -223,23 +229,24 @@
       "title": "Doctor's Surgery, Land adjoining Seabourne Road, Bexhill",
       "town": "Bexhill-on-Sea",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Arsa",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1010,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -247,23 +254,24 @@
       "title": "Egerton Park Lodge, Bexhill & Garages 1 & 3",
       "town": "Bexhill-on-Sea",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Karma Kullanım",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1011,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -271,23 +279,24 @@
       "title": "Former Eco Centre, Broad Oak Park, Bexhill",
       "town": "Bexhill-on-Sea",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Karma Kullanım",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1012,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -295,23 +304,24 @@
       "title": "Former Egerton Outdoor Bowls Club",
       "town": "Bexhill-on-Sea",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Karma Kullanım",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1013,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -319,23 +329,24 @@
       "title": "Former High School Site, Down Road, Bexhill (AKA King Offa Site)",
       "town": "Bexhill-on-Sea",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Karma Kullanım",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1014,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -343,23 +354,24 @@
       "title": "Former Public Conveniences, Buckhurst Road, Bexhill",
       "town": "Bexhill-on-Sea",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Karma Kullanım",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1015,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -367,23 +379,24 @@
       "title": "Former Public Conveniences, Rope Walk, Tower St, Rye",
       "town": "Rye",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Karma Kullanım",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1016,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -391,23 +404,24 @@
       "title": "Former Railway Track, Ninfield Road (North)",
       "town": "Bexhill-on-Sea",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Karma Kullanım",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1017,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -415,23 +429,24 @@
       "title": "Galley Hill Bottom Car Park, Bexhill  - prev part of C P . Land at East Parade",
       "town": "Bexhill-on-Sea",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Arsa",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1018,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -439,23 +454,24 @@
       "title": "Garage 4, Wish Street, Rye",
       "town": "Rye",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Karma Kullanım",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1019,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -463,23 +479,24 @@
       "title": "Garage, 14 Terminus Road, Bexhill",
       "town": "Bexhill-on-Sea",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Karma Kullanım",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1020,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -487,23 +504,24 @@
       "title": "Happy Landings/ Pebsham Wood, Bexhill",
       "town": "Bexhill-on-Sea",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Arsa",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1021,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -511,23 +529,24 @@
       "title": "Kiosk 8, The Colonnade, Marina, Bexhill (Former Life Boat Room)",
       "town": "Bexhill-on-Sea",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Karma Kullanım",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1022,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -535,23 +554,24 @@
       "title": "Kiosk 9, The Colonnade, Bexhill (Former Coastal Control Office)",
       "town": "Bexhill-on-Sea",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Karma Kullanım",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1023,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -559,23 +579,24 @@
       "title": "Land adj Sands End Farm Lane, Camber",
       "town": "Rye",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Arsa",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1024,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -583,23 +604,24 @@
       "title": "Land adj. 14 Cyprus Place, Rye",
       "town": "Rye",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Arsa",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1025,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -607,23 +629,24 @@
       "title": "Land adj. Dallington Close & Seabourne Rd, Bexhill",
       "town": "Bexhill-on-Sea",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Arsa",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1026,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -631,23 +654,24 @@
       "title": "Land Adj. Stanhope Cottage, Battle",
       "town": "Battle",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Arsa",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1027,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -655,23 +679,24 @@
       "title": "Land adj. The Maltings, Peasmarsh",
       "town": "Rye",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Arsa",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1028,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -679,23 +704,24 @@
       "title": "Land adjacent to Love Lane, Rye",
       "town": "Rye",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Arsa",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1029,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -703,23 +729,24 @@
       "title": "Land adjoining Fairview, Pett Road, Guestling",
       "town": "Hastings",
       "district": "Hastings",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Arsa",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1030,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -727,23 +754,24 @@
       "title": "Land adjoining Levetts Wood, Bexhill",
       "town": "Bexhill-on-Sea",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Arsa",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1031,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -751,23 +779,24 @@
       "title": "Land adjoining Seabourne Road, Bexhill",
       "town": "Bexhill-on-Sea",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Arsa",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1032,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -775,23 +804,24 @@
       "title": "Land adjoining the Ship Public House",
       "town": "Rye",
       "district": "Rother",
-      "opp": "Kamu/Belediye Mülkü",
+      "opp": "Arsa/Geliştirme",
       "prop": "Arsa",
       "price": null,
       "size": null,
       "rateable": null,
-      "status": "Konsey arazisi",
+      "status": "Konsey arazisi (boş)",
       "source": "Konsey Varlık Kaydı",
-      "score": null,
+      "score": 74,
       "income": 0,
       "date": "2026-07-12",
       "why": "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir.",
-      "real": true,
       "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
       "contact": "taris.demann@rother.gov.uk",
       "id": 1033,
       "score_factors": [
-        "gerçek belediye kaydı (CANLI)"
+        "boş/distressed/ucuz durum",
+        "geliştirme arazisi",
+        "kaynak: Konsey Varlık Kaydı"
       ],
       "link": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx"
     },
@@ -806,15 +836,16 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 59,
+      "score": 65,
       "income": 0,
       "date": "2026-07-07",
       "why": "Planlama başvurusu: Proposed conversion of the ground floor premises (Class E) to form two self-contained flats — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://publicaccess.hastings.gov.uk/online-applications/applicationDetails.do?activeTab=summary&keyVal=_HSTBC_DCAPR_123229",
       "id": 1034,
       "score_factors": [
-        "kamu/change-of-use",
-        "planlama sinyali"
+        "change-of-use",
+        "konuta dönüşüm sinyali",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://publicaccess.hastings.gov.uk/online-applications/applicationDetails.do?activeTab=summary&keyVal=_HSTBC_DCAPR_123229"
     },
@@ -829,15 +860,16 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 59,
+      "score": 65,
       "income": 0,
       "date": "2026-06-19",
       "why": "Planlama başvurusu: Notification for prior approval for change the use of the identified ground-floor office accommodation to Class C3 residential use. — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://publicaccess.hastings.gov.uk/online-applications/applicationDetails.do?keyVal=_HSTBC_DCAPR_123213&activeTab=summary",
       "id": 1035,
       "score_factors": [
-        "kamu/change-of-use",
-        "planlama sinyali"
+        "change-of-use",
+        "konuta dönüşüm sinyali",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://publicaccess.hastings.gov.uk/online-applications/applicationDetails.do?keyVal=_HSTBC_DCAPR_123213&activeTab=summary"
     },
@@ -852,15 +884,15 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 59,
+      "score": 57,
       "income": 0,
       "date": "2026-06-19",
       "why": "Planlama başvurusu: Rear extension to replace existing conservatory, existing hip end roof replaced with a gable ended roof with steeper pitch and raised ridge height and garage conversion into annexe. — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://publicaccess.hastings.gov.uk/online-applications/applicationDetails.do?activeTab=summary&keyVal=_HSTBC_DCAPR_123210",
       "id": 1036,
       "score_factors": [
-        "kamu/change-of-use",
-        "planlama sinyali"
+        "change-of-use",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://publicaccess.hastings.gov.uk/online-applications/applicationDetails.do?activeTab=summary&keyVal=_HSTBC_DCAPR_123210"
     },
@@ -875,15 +907,15 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 57,
+      "score": 54,
       "income": 0,
       "date": "2026-06-18",
       "why": "Planlama başvurusu: Application for a Lawful Development Certificate for a Lawful Development of a previously constructed dormer loft conversion. — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://publicaccess.hastings.gov.uk/online-applications/applicationDetails.do?keyVal=_HSTBC_DCAPR_123206&activeTab=summary",
       "id": 1037,
       "score_factors": [
-        "geliştirme arsası",
-        "planlama sinyali"
+        "geliştirme arazisi",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://publicaccess.hastings.gov.uk/online-applications/applicationDetails.do?keyVal=_HSTBC_DCAPR_123206&activeTab=summary"
     },
@@ -898,15 +930,15 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 59,
+      "score": 57,
       "income": 0,
       "date": "2026-06-15",
       "why": "Planlama başvurusu: Conversion of existing storage accommodation to habitable living space, including construction of porch to side — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://publicaccess.hastings.gov.uk/online-applications/applicationDetails.do?keyVal=_HSTBC_DCAPR_123197&activeTab=summary",
       "id": 1038,
       "score_factors": [
-        "kamu/change-of-use",
-        "planlama sinyali"
+        "change-of-use",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://publicaccess.hastings.gov.uk/online-applications/applicationDetails.do?keyVal=_HSTBC_DCAPR_123197&activeTab=summary"
     },
@@ -921,15 +953,16 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 59,
+      "score": 65,
       "income": 0,
       "date": "2026-06-12",
       "why": "Planlama başvurusu: Notification for prior approval for change of use from Class E (Offices) on ground floor to Class C3 (Residential) to provide 4 dwellings. — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://publicaccess.hastings.gov.uk/online-applications/applicationDetails.do?activeTab=summary&keyVal=_HSTBC_DCAPR_123198",
       "id": 1039,
       "score_factors": [
-        "kamu/change-of-use",
-        "planlama sinyali"
+        "change-of-use",
+        "konuta dönüşüm sinyali",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://publicaccess.hastings.gov.uk/online-applications/applicationDetails.do?activeTab=summary&keyVal=_HSTBC_DCAPR_123198"
     },
@@ -944,15 +977,16 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 57,
+      "score": 62,
       "income": 0,
       "date": "2026-07-02",
       "why": "Planlama başvurusu: APPLICATION FOR APPROVAL OF DETAILS RESERVED BY CONDITIONS 4 (Drainage: Foul Water - Details of Foul Drainage (A)), 5 (Drainage: Surface Water - Details of Surface Water Disposal (A)), 6 (Condition 6 - Drainage: Surface Water - Maintenance), 7 (Drainage: Surface Water - Construction), 9 (Construction - Code of Construction Practice ), 13 (Nature Conservation - Implementation of biodiversity enhancement as in Ecological Survey) AND 14 (Noise - Protection of Individual Dwellings) ATTACHED TO WD/2022/0334/O — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://planning.wealden.gov.uk/Planning/Display/WD/2026/1325/CD",
       "id": 1040,
       "score_factors": [
-        "geliştirme arsası",
-        "planlama sinyali"
+        "geliştirme arazisi",
+        "konuta dönüşüm sinyali",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://planning.wealden.gov.uk/Planning/Display/WD/2026/1325/CD"
     },
@@ -967,15 +1001,15 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 59,
+      "score": 57,
       "income": 0,
       "date": "2026-06-30",
       "why": "Planlama başvurusu: Part garage conversion from hobbies/storage space to bedroom with new roof lantern. — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://online.rother.gov.uk/planning/index.html?fa=getApplication&id=262838",
       "id": 1041,
       "score_factors": [
-        "kamu/change-of-use",
-        "planlama sinyali"
+        "change-of-use",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://online.rother.gov.uk/planning/index.html?fa=getApplication&id=262838"
     },
@@ -990,15 +1024,16 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 59,
+      "score": 65,
       "income": 0,
       "date": "2026-06-16",
       "why": "Planlama başvurusu: Proposed building - A timber flat (pent) roofed pole barn with wooden sides to a height of 1m from the ground (partly open sided). Open to front. Existing soil floor — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://online.rother.gov.uk/planning/index.html?fa=getApplication&id=262825",
       "id": 1042,
       "score_factors": [
-        "kamu/change-of-use",
-        "planlama sinyali"
+        "change-of-use",
+        "konuta dönüşüm sinyali",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://online.rother.gov.uk/planning/index.html?fa=getApplication&id=262825"
     },
@@ -1013,15 +1048,16 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 59,
+      "score": 65,
       "income": 0,
       "date": "2026-06-11",
       "why": "Planlama başvurusu: Certificate of Proposed Lawfulness for the use of land for siting of a mobile home used as ancillary to the main dwelling. — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://online.rother.gov.uk/planning/index.html?fa=getApplication&id=262821",
       "id": 1043,
       "score_factors": [
-        "kamu/change-of-use",
-        "planlama sinyali"
+        "change-of-use",
+        "konuta dönüşüm sinyali",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://online.rother.gov.uk/planning/index.html?fa=getApplication&id=262821"
     },
@@ -1036,15 +1072,16 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 57,
+      "score": 62,
       "income": 0,
       "date": "2026-06-05",
       "why": "Planlama başvurusu: Retrospective application for demolition of existing dwelling and construction of 3 No. detached family dwellings including gardens, parking and access to Seabourne Road — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://online.rother.gov.uk/planning/index.html?fa=getApplication&id=262797",
       "id": 1044,
       "score_factors": [
-        "geliştirme arsası",
-        "planlama sinyali"
+        "geliştirme arazisi",
+        "konuta dönüşüm sinyali",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://online.rother.gov.uk/planning/index.html?fa=getApplication&id=262797"
     },
@@ -1059,15 +1096,16 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 59,
+      "score": 65,
       "income": 0,
       "date": "2026-06-03",
       "why": "Planlama başvurusu: Change of use of C3 dwellinghouse to C4 House of multiple occupation — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://publicaccess.hastings.gov.uk/online-applications/applicationDetails.do?activeTab=summary&keyVal=_HSTBC_DCAPR_123157",
       "id": 1045,
       "score_factors": [
-        "kamu/change-of-use",
-        "planlama sinyali"
+        "change-of-use",
+        "konuta dönüşüm sinyali",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://publicaccess.hastings.gov.uk/online-applications/applicationDetails.do?activeTab=summary&keyVal=_HSTBC_DCAPR_123157"
     },
@@ -1082,15 +1120,16 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 59,
+      "score": 65,
       "income": 0,
       "date": "2026-06-03",
       "why": "Planlama başvurusu: Single storey rear extension, decking area (with screening) and associated internal alterations to ground floor flat. — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://online.rother.gov.uk/planning/index.html?fa=getApplication&id=262800",
       "id": 1046,
       "score_factors": [
-        "kamu/change-of-use",
-        "planlama sinyali"
+        "change-of-use",
+        "konuta dönüşüm sinyali",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://online.rother.gov.uk/planning/index.html?fa=getApplication&id=262800"
     },
@@ -1105,15 +1144,15 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 57,
+      "score": 54,
       "income": 0,
       "date": "2026-07-03",
       "why": "Planlama başvurusu: PRIOR APPROVAL FOR THE ERECTION OF A SINGLE STOREY REAR EXTENSION WHICH WOULD EXTEND BEYOND THE REAR WALL OF THE ORIGINAL HOUSE BY 3.90M, FOR WHICH THE MAXIMUM HEIGHT WOULD BE 3.00M, AND FOR WHICH THE HEIGHT OF THE EAVES WOULD BE 3.00M. — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://planning.wealden.gov.uk/Planning/Display/WD/2026/1334/PD",
       "id": 1047,
       "score_factors": [
-        "geliştirme arsası",
-        "planlama sinyali"
+        "geliştirme arazisi",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://planning.wealden.gov.uk/Planning/Display/WD/2026/1334/PD"
     },
@@ -1128,15 +1167,16 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 59,
+      "score": 65,
       "income": 0,
       "date": "2026-07-02",
       "why": "Planlama başvurusu: USE OF THE LAND TO SITE A MOBILE HOME FOR INCIDENTAL USE TO THE MAIN DWELLINGHOUSE — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://planning.wealden.gov.uk/Planning/Display/WD/2026/1327/LDP",
       "id": 1048,
       "score_factors": [
-        "kamu/change-of-use",
-        "planlama sinyali"
+        "change-of-use",
+        "konuta dönüşüm sinyali",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://planning.wealden.gov.uk/Planning/Display/WD/2026/1327/LDP"
     },
@@ -1151,15 +1191,15 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 57,
+      "score": 54,
       "income": 0,
       "date": "2026-07-02",
       "why": "Planlama başvurusu: Adjoining Authority Consultation - WD/2026/1258/MAJ - FULL APPLICATION FOR THE ERECTION OF A FOODSTORE (USE CLASS E(a)) WITH ASSOCIATED ACCESS ROADS, PARKING, SERVICING AREA, AND LANDSCAPING, PLUS ALL ASSOCIATED WORKS; AND OUTLINE APPLICATION (ALL MATTERS RESERVED EXCEPT FOR ACCESS) FOR THE ERECTION OF A CARE HOME (CLASS C2), WITH ASSOCIATED ACCESS ROADS, PARKING, SERVICING AREA AND LANDSCAPING, PLUS ALL ASSOCIATED WORKS — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://planningpublicaccess.southdowns.gov.uk/online-applications/applicationDetails.do?keyVal=THWJ2CTU0TU00&activeTab=summary",
       "id": 1049,
       "score_factors": [
-        "geliştirme arsası",
-        "planlama sinyali"
+        "geliştirme arazisi",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://planningpublicaccess.southdowns.gov.uk/online-applications/applicationDetails.do?keyVal=THWJ2CTU0TU00&activeTab=summary"
     },
@@ -1174,15 +1214,15 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 59,
+      "score": 57,
       "income": 0,
       "date": "2026-06-29",
       "why": "Planlama başvurusu: CHANGE OF USE FROM STORAGE AND OVERSPILL CAR PARKING TO AUCTION PREMISES (SUI GENERIS) — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://planning.wealden.gov.uk/Planning/Display/WD/2026/1291/FR",
       "id": 1050,
       "score_factors": [
-        "kamu/change-of-use",
-        "planlama sinyali"
+        "change-of-use",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://planning.wealden.gov.uk/Planning/Display/WD/2026/1291/FR"
     },
@@ -1197,15 +1237,15 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 59,
+      "score": 57,
       "income": 0,
       "date": "2026-06-25",
       "why": "Planlama başvurusu: PROPOSED SINGLE-STOREY EXTENSION TO THE SIDE, GARAGE CONVERSION WITH NEW PITCHED ROOF OVER AND ASSOCIATED ALTERATIONS — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://planning.wealden.gov.uk/Planning/Display/WD/2026/1279/F",
       "id": 1051,
       "score_factors": [
-        "kamu/change-of-use",
-        "planlama sinyali"
+        "change-of-use",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://planning.wealden.gov.uk/Planning/Display/WD/2026/1279/F"
     },
@@ -1220,15 +1260,15 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 57,
+      "score": 54,
       "income": 0,
       "date": "2026-06-23",
       "why": "Planlama başvurusu: HYBRID PLANNING APPLICATION COMPRISING: FULL APPLICATION FOR THE ERECTION OF A FOODSTORE (USE CLASS E(a)) WITH ASSOCIATED ACCESS ROADS, PARKING, SERVICING AREA, AND LANDSCAPING, PLUS ALL ASSOCIATED WORKS; AND OUTLINE APPLICATION (ALL MATTERS RESERVED EXCEPT FOR ACCESS) FOR THE ERECTION OF A CARE HOME (CLASS C2), WITH ASSOCIATED ACCESS ROADS, PARKING, SERVICING AREA AND LANDSCAPING, PLUS ALL ASSOCIATED WORKS. — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://planning.wealden.gov.uk/Planning/Display/WD/2026/1258/MAJ",
       "id": 1052,
       "score_factors": [
-        "geliştirme arsası",
-        "planlama sinyali"
+        "geliştirme arazisi",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://planning.wealden.gov.uk/Planning/Display/WD/2026/1258/MAJ"
     },
@@ -1243,15 +1283,16 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 59,
+      "score": 65,
       "income": 0,
       "date": "2026-06-22",
       "why": "Planlama başvurusu: CONVERSION OF EXISTING BUILDING AND REAR EXTENSION TO FORM 8 NO. FLATS. — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://planning.wealden.gov.uk/Planning/Display/WD/2026/1241/FR",
       "id": 1053,
       "score_factors": [
-        "kamu/change-of-use",
-        "planlama sinyali"
+        "change-of-use",
+        "konuta dönüşüm sinyali",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://planning.wealden.gov.uk/Planning/Display/WD/2026/1241/FR"
     },
@@ -1266,15 +1307,16 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 57,
+      "score": 62,
       "income": 0,
       "date": "2026-06-22",
       "why": "Planlama başvurusu: MODIFICATION OF SECTION 106 AGREEMENT (UNILATERAL UNDERTAKING) DATED 18/03/2022 ATTACHED TO PLANNING PERMISSION WD/2020/1504/MAO (OUTLINE APPLICATION FOR THE SUBDIVISION OF THE EXISTING DWELLING INTO 2 NO. SEPARATE RESIDENTIAL UNITS AND ERECTION OF UP TO 30 NO. DWELLINGS, ACCESS AND OTHER ASSOCIATED INFRASTRUCTURE, INCLUDING OFF-SITE HIGHWAY WORKS) TO ALLOW FOR MODIFICATIONS TO AFFORDABLE HOUSING REQUIREMENTS AND BUS SERVICE CONTRIBUTIONS. — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://planning.wealden.gov.uk/Planning/Display/WD/2026/1243/POR",
       "id": 1054,
       "score_factors": [
-        "geliştirme arsası",
-        "planlama sinyali"
+        "geliştirme arazisi",
+        "konuta dönüşüm sinyali",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://planning.wealden.gov.uk/Planning/Display/WD/2026/1243/POR"
     },
@@ -1289,15 +1331,15 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 57,
+      "score": 54,
       "income": 0,
       "date": "2026-07-02",
       "why": "Planlama başvurusu: Erection of two storey side extension and side dormer — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://www.lewes-eastbourne.gov.uk/article/2087/?RefType=APPPlanCase&KeyText=260356",
       "id": 1055,
       "score_factors": [
-        "geliştirme arsası",
-        "planlama sinyali"
+        "geliştirme arazisi",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://www.lewes-eastbourne.gov.uk/article/2087/?RefType=APPPlanCase&KeyText=260356"
     },
@@ -1312,15 +1354,15 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 57,
+      "score": 54,
       "income": 0,
       "date": "2026-06-26",
       "why": "Planlama başvurusu: Erection of 1no. single storey side extension, 1no. garden building, conversion of attached garage, reposition of garden fencing and associated landscaping — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://www.lewes-eastbourne.gov.uk/article/2087/?RefType=APPPlanCase&KeyText=260350",
       "id": 1056,
       "score_factors": [
-        "geliştirme arsası",
-        "planlama sinyali"
+        "geliştirme arazisi",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://www.lewes-eastbourne.gov.uk/article/2087/?RefType=APPPlanCase&KeyText=260350"
     },
@@ -1335,15 +1377,16 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 59,
+      "score": 65,
       "income": 0,
       "date": "2026-06-24",
       "why": "Planlama başvurusu: Single storey extension to existing detached studio to create annexe ancillary to the host dwelling — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://www.lewes-eastbourne.gov.uk/article/2087/?RefType=APPPlanCase&KeyText=260347",
       "id": 1057,
       "score_factors": [
-        "kamu/change-of-use",
-        "planlama sinyali"
+        "change-of-use",
+        "konuta dönüşüm sinyali",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://www.lewes-eastbourne.gov.uk/article/2087/?RefType=APPPlanCase&KeyText=260347"
     },
@@ -1358,15 +1401,15 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 57,
+      "score": 54,
       "income": 0,
       "date": "2026-06-22",
       "why": "Planlama başvurusu: Application to determine if prior approval is required for a proposedLarger Home Extension The Town and Country Planning (General Permitted Development) (England) Order 2015 (as amended) - Schedule 2, Part 1, Class A — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://www.lewes-eastbourne.gov.uk/article/2087/?RefType=APPPlanCase&KeyText=260345",
       "id": 1058,
       "score_factors": [
-        "geliştirme arsası",
-        "planlama sinyali"
+        "geliştirme arazisi",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://www.lewes-eastbourne.gov.uk/article/2087/?RefType=APPPlanCase&KeyText=260345"
     },
@@ -1381,15 +1424,15 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 59,
+      "score": 57,
       "income": 0,
       "date": "2026-06-19",
       "why": "Planlama başvurusu: Change of Use from (Motor Vehicle Paint Spraying and Panel Beating (Class E) to Car Sales Showroom (Class E), re-cladding of existing building and changes to sections of external ground surfaces — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://www.lewes-eastbourne.gov.uk/article/2087/?RefType=APPPlanCase&KeyText=260343",
       "id": 1059,
       "score_factors": [
-        "kamu/change-of-use",
-        "planlama sinyali"
+        "change-of-use",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://www.lewes-eastbourne.gov.uk/article/2087/?RefType=APPPlanCase&KeyText=260343"
     },
@@ -1404,15 +1447,15 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 57,
+      "score": 54,
       "income": 0,
       "date": "2026-06-16",
       "why": "Planlama başvurusu: Erection of single storey rear extension with installation of solar panels — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://www.lewes-eastbourne.gov.uk/article/2087/?RefType=APPPlanCase&KeyText=260341",
       "id": 1060,
       "score_factors": [
-        "geliştirme arsası",
-        "planlama sinyali"
+        "geliştirme arazisi",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://www.lewes-eastbourne.gov.uk/article/2087/?RefType=APPPlanCase&KeyText=260341"
     },
@@ -1427,15 +1470,15 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 57,
+      "score": 54,
       "income": 0,
       "date": "2026-07-07",
       "why": "Planlama başvurusu: Erection of single storey rear kitchen extension — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://planningpublicaccess.southdowns.gov.uk/online-applications/applicationDetails.do?keyVal=THRBMGTULZZ00&activeTab=summary",
       "id": 1061,
       "score_factors": [
-        "geliştirme arsası",
-        "planlama sinyali"
+        "geliştirme arazisi",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://planningpublicaccess.southdowns.gov.uk/online-applications/applicationDetails.do?keyVal=THRBMGTULZZ00&activeTab=summary"
     },
@@ -1450,15 +1493,16 @@
       "rateable": null,
       "status": "Planlama aşaması",
       "source": "Planlama Başvurusu",
-      "score": 57,
+      "score": 62,
       "income": 0,
       "date": "2026-06-29",
       "why": "Planlama başvurusu: Demolition of the existing rear-side conservatory and replacement with a single-storey rear-side extension; alterations to fenestration on the rear-side elevation; erection of a two-storey infill extension between the existing dwelling and detached garage; and first-floor extension to the existing garage to provide additional habitable accommodation — dönüşüm/geliştirme fırsatı sinyali.",
       "url": "https://planningpa.lewes-eastbourne.gov.uk/online-applications/applicationDetails.do?keyVal=TH8JWYJDH1Q00&activeTab=summary",
       "id": 1062,
       "score_factors": [
-        "geliştirme arsası",
-        "planlama sinyali"
+        "geliştirme arazisi",
+        "konuta dönüşüm sinyali",
+        "kaynak: Planlama Başvurusu"
       ],
       "link": "https://planningpa.lewes-eastbourne.gov.uk/online-applications/applicationDetails.do?keyVal=TH8JWYJDH1Q00&activeTab=summary"
     },
@@ -1473,13 +1517,16 @@
       "rateable": null,
       "status": "Düşük fiyatlı",
       "source": "Land Registry",
-      "score": 54,
+      "score": 69,
       "income": 0,
       "date": "2026-05-22",
       "why": "Land Registry'de bölge ortalaması altında satış — potansiyel ucuz edinim.",
       "url": "https://landregistry.data.gov.uk/",
       "id": 1063,
       "score_factors": [
+        "boş/distressed/ucuz durum",
+        "ucuz gayrimenkul",
+        "kaynak: Land Registry",
         "düşük giriş (<£150k)"
       ],
       "link": "https://landregistry.data.gov.uk/"
@@ -1495,13 +1542,16 @@
       "rateable": null,
       "status": "Düşük fiyatlı",
       "source": "Land Registry",
-      "score": 54,
+      "score": 69,
       "income": 0,
       "date": "2026-05-15",
       "why": "Land Registry'de bölge ortalaması altında satış — potansiyel ucuz edinim.",
       "url": "https://landregistry.data.gov.uk/",
       "id": 1064,
       "score_factors": [
+        "boş/distressed/ucuz durum",
+        "ucuz gayrimenkul",
+        "kaynak: Land Registry",
         "düşük giriş (<£150k)"
       ],
       "link": "https://landregistry.data.gov.uk/"
@@ -1517,13 +1567,16 @@
       "rateable": null,
       "status": "Düşük fiyatlı",
       "source": "Land Registry",
-      "score": 54,
+      "score": 69,
       "income": 0,
       "date": "2026-05-15",
       "why": "Land Registry'de bölge ortalaması altında satış — potansiyel ucuz edinim.",
       "url": "https://landregistry.data.gov.uk/",
       "id": 1065,
       "score_factors": [
+        "boş/distressed/ucuz durum",
+        "ucuz gayrimenkul",
+        "kaynak: Land Registry",
         "düşük giriş (<£150k)"
       ],
       "link": "https://landregistry.data.gov.uk/"
@@ -1539,13 +1592,16 @@
       "rateable": null,
       "status": "Düşük fiyatlı",
       "source": "Land Registry",
-      "score": 54,
+      "score": 69,
       "income": 0,
       "date": "2026-05-15",
       "why": "Land Registry'de bölge ortalaması altında satış — potansiyel ucuz edinim.",
       "url": "https://landregistry.data.gov.uk/",
       "id": 1066,
       "score_factors": [
+        "boş/distressed/ucuz durum",
+        "ucuz gayrimenkul",
+        "kaynak: Land Registry",
         "düşük giriş (<£150k)"
       ],
       "link": "https://landregistry.data.gov.uk/"
@@ -1561,13 +1617,16 @@
       "rateable": null,
       "status": "Düşük fiyatlı",
       "source": "Land Registry",
-      "score": 54,
+      "score": 69,
       "income": 0,
       "date": "2026-05-11",
       "why": "Land Registry'de bölge ortalaması altında satış — potansiyel ucuz edinim.",
       "url": "https://landregistry.data.gov.uk/",
       "id": 1067,
       "score_factors": [
+        "boş/distressed/ucuz durum",
+        "ucuz gayrimenkul",
+        "kaynak: Land Registry",
         "düşük giriş (<£150k)"
       ],
       "link": "https://landregistry.data.gov.uk/"

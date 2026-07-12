@@ -103,15 +103,14 @@ def council_assets(offline=True):
         prop = "Arsa" if "land" in r["address"].lower() else "Karma Kullanım"
         out.append({
             "title": r["address"], "town": r["town"], "district": district_of(r["town"]),
-            "opp": "Kamu/Belediye Mülkü", "prop": prop,
+            "opp": "Arsa/Geliştirme", "prop": prop,
             "price": None, "size": None, "rateable": None,
-            "status": "Boş" if is_vacant else "Konsey arazisi",
+            "status": "Konsey arazisi (boş)",
             "source": "Konsey Varlık Kaydı",
             "score": None, "income": 0, "date": TODAY,
             "why": ("Rother varlık kaydında BOŞ görünen belediye mülkü. Elden çıkarma/peppercorn/CAT için değerlendirilebilir."
                     if is_vacant else
                     "Rother varlık kaydındaki konsey mülkiyetindeki geliştirilebilir arazi/parsel. Elden çıkarma/CAT/geliştirme için değerlendirilebilir."),
-            "real": True,
             "url": "https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx",
             "contact": "taris.demann@rother.gov.uk",
         })

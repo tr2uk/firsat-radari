@@ -532,7 +532,7 @@ function ddlChip(d){
 
 function card(d){
   const on=shortlist.has(d.id)?"on":"";
-  const priceCell = d.real ? "Konseyden" : fmt(d.price);
+  const priceCell = d.real ? "Konseyden" : (d.price==null ? "Teklif/müzakere" : fmt(d.price));
   const sizeCell  = (d.real||d.size==null) ? "—" : d.size.toLocaleString("en-GB")+" sqft";
   const rateCell  = d.real ? "—" : (d.rateable?fmt(d.rateable):"—");
   const acts = d.real
@@ -603,8 +603,8 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
 
 /* ---------- fizibilite ---------- */
 function feasCalc(d,over){
-  const purchase=over?.purchase ?? d.price;
-  const refurb  =over?.refurb   ?? Math.round(d.size*(refurbRate[d.prop]||40));
+  const purchase=over?.purchase ?? d.price ?? 0;
+  const refurb  =over?.refurb   ?? (d.size ? Math.round(d.size*(refurbRate[d.prop]||40)) : 0);
   const acqPct  =over?.acqPct   ?? 6;
   const income  =over?.income   ?? d.income;
   const opexPct =over?.opexPct  ?? 28;
@@ -659,7 +659,7 @@ function openDetail(id){
         <div class="k">Konum</div><div>${d.town}, ${d.district}, East Sussex</div>
         <div class="k">Fırsat / Mülk tipi</div><div>${d.opp} · ${d.prop}</div>
         <div class="k">Durum</div><div>${d.status}</div>
-        <div class="k">Rehber fiyat</div><div><b>${d.real?"Konseyden / belgede":fmt(d.price)}</b></div>
+        <div class="k">Rehber fiyat</div><div><b>${d.real?"Konseyden / belgede":(d.price==null?"Teklif/müzakere":fmt(d.price))}</b></div>
         <div class="k">Büyüklük</div><div>${(d.real||d.size==null)?"Belgede":d.size.toLocaleString("en-GB")+" sqft"}</div>
         <div class="k">Rateable value</div><div>${d.real?"—":(d.rateable?fmt(d.rateable):"—")}</div>
         ${d.real&&d.contact?`<div class="k">İletişim</div><div>${d.contact}</div>`:""}
@@ -723,7 +723,7 @@ Alıcı: ${alici}
    • Konum: ${d.town}, ${d.district}, East Sussex
    • Mülk tipi: ${d.prop} | Fırsat tipi: ${d.opp}
    • Durum: ${d.status} | Veri kaynağı: ${d.source}
-   • Büyüklük: ${d.size.toLocaleString("en-GB")} sqft | Rehber fiyat: ${fmt(d.price)}
+   • Büyüklük: ${d.size?d.size.toLocaleString("en-GB")+" sqft":"—"} | Rehber fiyat: ${d.price==null?"Teklif/müzakere":fmt(d.price)}
    • Rateable value: ${d.rateable?fmt(d.rateable):"—"} | Fırsat skoru: ${d.score}/100
    • İlan tarihi: ${fmtDate(d.date)}${ddlTR}
    • İlan/kaynak linki: ${d.link||"—"}
@@ -735,14 +735,14 @@ Alıcı: ${alici}
    ${useSuggest[d.prop]||"—"}
 
 4. KABA FİZİBİLİTE (temsilî)
-   • Satın alma            : ${fmt(f.purchase)}
+${d.price==null?`   • Fiyat konsey belgesinden / müzakere ile belirlenecek.`:`   • Satın alma            : ${fmt(f.purchase)}
    • Tahmini tadilat       : ${fmt(f.refurb)}
    • Edinim maliyeti (~%${f.acqPct}) : ${fmt(f.acq)}
    • TOPLAM YATIRIM        : ${fmt(f.total)}
    • Tahmini yıllık brüt gelir : ${fmt(f.income)}
    • Brüt getiri           : ${f.gross.toFixed(1)}%
    • Net getiri (~%${f.opexPct} gider) : ${f.netY.toFixed(1)}%
-   • Yaklaşık geri ödeme   : ${f.payback?f.payback.toFixed(1)+" yıl":"—"}
+   • Yaklaşık geri ödeme   : ${f.payback?f.payback.toFixed(1)+" yıl":"—"}`}
 
 5. SONRAKİ ADIMLAR
    • Tapu ve planlama geçmişi kontrolü (Land Registry / konsey)
@@ -777,7 +777,7 @@ Recipient: ${audience}
    • Location: ${d.town}, ${d.district}, East Sussex
    • Property type: ${d.prop} | Opportunity: ${d.opp}
    • Status: ${d.status} | Data source: ${d.source}
-   • Size: ${d.size.toLocaleString("en-GB")} sqft | Guide price: ${fmt(d.price)}
+   • Size: ${d.size?d.size.toLocaleString("en-GB")+" sqft":"—"} | Guide price: ${d.price==null?"To be negotiated":fmt(d.price)}
    • Rateable value: ${d.rateable?fmt(d.rateable):"—"} | Opportunity score: ${d.score}/100
    • Listed: ${fmtDate(d.date)}${ddlEN}
    • Listing/source link: ${d.link||"—"}
@@ -789,14 +789,14 @@ Recipient: ${audience}
    ${useSuggest[d.prop]||"—"}
 
 4. INDICATIVE FEASIBILITY
-   • Purchase              : ${fmt(f.purchase)}
+${d.price==null?`   • Price to be determined from the council document / by negotiation.`:`   • Purchase              : ${fmt(f.purchase)}
    • Estimated refurb      : ${fmt(f.refurb)}
    • Acquisition costs (~${f.acqPct}%) : ${fmt(f.acq)}
    • TOTAL INVESTMENT      : ${fmt(f.total)}
    • Estimated gross income: ${fmt(f.income)}
    • Gross yield           : ${f.gross.toFixed(1)}%
    • Net yield (~${f.opexPct}% costs) : ${f.netY.toFixed(1)}%
-   • Approx. payback       : ${f.payback?f.payback.toFixed(1)+" yrs":"—"}
+   • Approx. payback       : ${f.payback?f.payback.toFixed(1)+" yrs":"—"}`}
 
 5. NEXT STEPS
    • Title & planning history check (Land Registry / council)
@@ -841,7 +841,7 @@ function openShortlist(){
   const items=DATA.filter(d=>shortlist.has(d.id));
   const body=items.length
     ? items.map(d=>`<div class="dl" style="grid-template-columns:1fr auto;align-items:center;margin:0 0 10px;border-bottom:1px solid var(--line);padding-bottom:10px">
-        <div><b>${d.title}</b><div class="loc">${d.town} · ${d.district} · ${fmt(d.price)} · skor ${d.score}${d.deadline?` · ⏳ ${fmtDate(d.deadline.date)}`:""}</div></div>
+        <div><b>${d.title}</b><div class="loc">${d.town} · ${d.district} · ${d.price==null?"Teklif/müzakere":fmt(d.price)} · skor ${d.score}${d.deadline?` · ⏳ ${fmtDate(d.deadline.date)}`:""}</div></div>
         <button class="mbtn" onclick="openProposal(${d.id})">Proposal</button></div>`).join("")
     : `<p style="color:var(--muted)">Henüz kısa listeye fırsat eklemediniz. Kartlardaki ☆ ile ekleyin.</p>`;
   showModal(`
@@ -927,7 +927,7 @@ function refreshMarkers(){
   list.forEach(d=>{
     const ll=coordsOf(d); pts.push(ll);
     const m=L.circleMarker(ll,{radius:9,weight:2,color:"#fff",fillColor:(d.score==null?"#0f9d8f":scoreHex(d.score)),fillOpacity:.95});
-    m.bindPopup(`<b>${d.title}</b><br>${d.town} · ${d.real?"Belediye (Canlı)":fmt(d.price)+" · skor "+d.score}${d.deadline?`<br>⏳ ${d.deadline.label}: ${fmtDate(d.deadline.date)} (${ddlText(d.deadline.date)})`:""}<br>
+    m.bindPopup(`<b>${d.title}</b><br>${d.town} · ${d.real?"Belediye (Canlı)":(d.price==null?"Teklif/müzakere":fmt(d.price))+" · skor "+d.score}${d.deadline?`<br>⏳ ${d.deadline.label}: ${fmtDate(d.deadline.date)} (${ddlText(d.deadline.date)})`:""}<br>
       <a href="#" onclick="openDetail(${d.id});return false">Detay</a> · <a href="${gmaps(d)}" target="_blank" rel="noopener">Google Maps</a>`);
     markers.addLayer(m);
   });

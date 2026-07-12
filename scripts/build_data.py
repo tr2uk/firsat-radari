@@ -75,22 +75,15 @@ def carry_over_stale(items, offline):
 
 
 # === Fırsat skoru — ağırlıklı ve ayarlanabilir kriterler ===
-# Bu ağırlıkları kendi stratejine göre değiştir; skor bunları toplar ve 50-97'ye sıkıştırır.
+# Bu ağırlıkları kendi stratejine göre değiştir; skor bunları toplar ve 45-92'ye sıkıştırır.
 WEIGHTS = {
-    "base": 50,
-    "vacant_or_distressed_status": 12,   # durum: Boş / Kapanıyor / Müzayede / Repossession
-    "opp_distress": 10,                  # fırsat tipi: Distressed / Atıl / Müzayede
-    "opp_public_or_cou": 6,              # Kamu-Belediye / Change-of-Use
-    "opp_land": 4,                       # Arsa / Geliştirme
-    "source_edge": 6,                    # kaynak: Gazette / Konsey / Belediye
-    "source_auction": 4,                 # kaynak: Auction
-    "source_planning": 3,                # kaynak: Planlama
-    "below_market": 8,                   # fiyat < rateable * 12
-    "affordable": 4,                     # fiyat < £150k (düşük giriş)
-    "deadline_soon": 5,                  # son tarih <= 21 gün
-    "ch_matched": 4,                     # tasfiye + kayıtlı ofis adresi eşleşti
+    "base": 45, "status_distress": 12, "opp_distress": 12, "opp_change_of_use": 8,
+    "opp_land": 5, "opp_cheap": 4, "opp_public": 6, "resi_conversion": 8,
+    "source_council": 12, "source_gazette": 10, "source_auction": 6,
+    "source_planning": 4, "source_land_registry": 3, "below_market": 8,
+    "affordable": 5, "deadline_soon": 5, "ch_matched": 5,
 }
-SCORE_MIN, SCORE_MAX = 50, 97
+SCORE_MIN, SCORE_MAX = 45, 92
 
 
 def _days_to(d):
@@ -101,34 +94,35 @@ def _days_to(d):
 
 
 def score(rec):
-    """Ağırlıklı fırsat skoru (0-100). Gerçek belediye (real) kayıtlar skorsuz -> frontend 'CANLI' gösterir.
-    Şeffaflık için katkı veren faktörler rec['score_factors'] içine yazılır."""
     if rec.get("real"):
-        rec["score_factors"] = ["gerçek belediye kaydı (CANLI)"]
+        rec["score_factors"] = ["gerçek belediye listesi (CANLI)"]
         return None
-    W = WEIGHTS
-    s = W["base"]
-    why = []
-    st = rec.get("status", "") or ""
-    if any(k in st for k in ["Boş", "Kapanıyor", "Müzayede", "Repossession"]):
-        s += W["vacant_or_distressed_status"]; why.append("boş/distressed durum")
+    W = WEIGHTS; s = W["base"]; why = []
+    stl = (rec.get("status", "") or "").lower()
+    if any(k in stl for k in ["boş", "kapanıyor", "müzayede", "repossession", "konsey arazisi", "düşük fiyatlı"]):
+        s += W["status_distress"]; why.append("boş/distressed/ucuz durum")
     opp = rec.get("opp", "")
     if opp in ("Distressed İşletme", "Atıl/Boş Bina", "Müzayede (Auction)"):
-        s += W["opp_distress"]; why.append("distressed fırsat tipi")
-    elif opp in ("Kamu/Belediye Mülkü", "Change-of-Use Fırsatı"):
-        s += W["opp_public_or_cou"]; why.append("kamu/change-of-use")
+        s += W["opp_distress"]; why.append("distressed fırsat")
+    elif opp == "Change-of-Use Fırsatı":
+        s += W["opp_change_of_use"]; why.append("change-of-use")
     elif opp == "Arsa/Geliştirme":
-        s += W["opp_land"]; why.append("geliştirme arsası")
-    src = rec.get("source", "")
-    if src in ("Gazette (Tasfiye)", "Konsey Varlık Kaydı", "Belediye (Canlı)"):
-        s += W["source_edge"]; why.append("ayrıcalıklı kaynak")
-    elif src == "Auction Kataloğu":
-        s += W["source_auction"]; why.append("müzayede kaynağı")
-    elif src == "Planlama Başvurusu":
-        s += W["source_planning"]; why.append("planlama sinyali")
+        s += W["opp_land"]; why.append("geliştirme arazisi")
+    elif opp == "Ucuz Gayrimenkul":
+        s += W["opp_cheap"]; why.append("ucuz gayrimenkul")
+    elif opp == "Kamu/Belediye Mülkü":
+        s += W["opp_public"]; why.append("kamu/belediye")
+    text = (rec.get("why", "") + " " + rec.get("title", "")).lower()
+    if any(k in text for k in ["konut", "resident", "flat", "c3", "daire", "dwelling"]):
+        s += W["resi_conversion"]; why.append("konuta dönüşüm sinyali")
+    src_w = {"Konsey Varlık Kaydı": "source_council", "Belediye (Canlı)": "source_council",
+             "Gazette (Tasfiye)": "source_gazette", "Auction Kataloğu": "source_auction",
+             "Planlama Başvurusu": "source_planning", "Land Registry": "source_land_registry"}.get(rec.get("source", ""))
+    if src_w:
+        s += W[src_w]; why.append("kaynak: " + rec.get("source", ""))
     p, r = rec.get("price"), rec.get("rateable")
     if p and r and p < r * 12:
-        s += W["below_market"]; why.append("piyasa altı gösterge")
+        s += W["below_market"]; why.append("piyasa altı")
     if p and p < 150000:
         s += W["affordable"]; why.append("düşük giriş (<£150k)")
     dl = rec.get("deadline")
@@ -137,7 +131,7 @@ def score(rec):
         if dd is not None and 0 <= dd <= 21:
             s += W["deadline_soon"]; why.append("son tarih yakın")
     if rec.get("ch_number"):
-        s += W["ch_matched"]; why.append("tasfiye+kayıtlı ofis eşleşti")
+        s += W["ch_matched"]; why.append("CH adres eşleşti")
     rec["score_factors"] = why
     return max(SCORE_MIN, min(SCORE_MAX, s))
 
