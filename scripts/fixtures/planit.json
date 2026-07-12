@@ -1,0 +1,6 @@
+[
+  {"name": "HS/FA/26/00123", "area_name": "Hastings", "address": "12 Queens Road, Hastings, TN34 1RL", "app_type": "Full", "description": "Change of use from retail (Class E) to 3 residential flats (Class C3)", "start_date": "2026-07-03", "url": "https://www.planit.org.uk/"},
+  {"name": "RR/2026/0456", "area_name": "Rother", "address": "High Street, Battle, TN33 0EN", "app_type": "Full", "description": "Demolition of existing building and erection of 6 dwellings", "start_date": "2026-06-28", "url": "https://www.planit.org.uk/"},
+  {"name": "WD/2026/0789", "area_name": "Wealden", "address": "London Road, Uckfield, TN22 1HZ", "app_type": "Change of Use", "description": "Change of use of first floor offices to residential (2 units)", "start_date": "2026-07-01", "url": "https://www.planit.org.uk/"},
+  {"name": "LW/2026/0321", "area_name": "Lewes", "address": "South Street, Seaford, BN25 1PE", "app_type": "Full", "description": "Change of use of vacant shop to café and 2 flats above", "start_date": "2026-07-06", "url": "https://www.planit.org.uk/"}
+]

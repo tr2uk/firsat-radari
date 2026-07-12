@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+scripts/.seen_ids.json
+.venv/
+.DS_Store

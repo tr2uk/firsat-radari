@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fırsat Radarı — East Sussex Gayrimenkul & İşletme Fırsat İstihbaratı</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  :root{
+    --bg:#eef1f6; --panel:#ffffff; --ink:#132030; --muted:#647388; --line:#e3e8f0;
+    --navy:#0f2438; --navy2:#1c3d5c; --accent:#e0a12e; --accent-d:#b97e12; --teal:#0f9d8f;
+    --hi:#16a34a; --mid:#d97706; --lo:#dc2626; --chip:#f1f5fb;
+    --shadow:0 1px 2px rgba(16,32,51,.06),0 8px 24px rgba(16,32,51,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);font-size:14px;line-height:1.45}
+  button{font-family:inherit;cursor:pointer}
+  /* Header */
+  header.top{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;padding:14px 20px;
+    display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:1000;box-shadow:0 2px 12px rgba(0,0,0,.18)}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand .mark{width:38px;height:38px;flex:0 0 38px}
+  .brand h1{font-size:19px;margin:0;letter-spacing:.2px}
+  .brand p{margin:1px 0 0;font-size:11.5px;color:#b7c6d8;letter-spacing:.3px}
+  .demo-chip{background:var(--accent);color:#3a2a05;font-weight:700;font-size:10.5px;padding:3px 8px;border-radius:20px;letter-spacing:.4px}
+  header.top .sp{flex:1}
+  .hbtn{background:rgba(255,255,255,.10);color:#fff;border:1px solid rgba(255,255,255,.18);
+    padding:8px 13px;border-radius:9px;font-size:12.5px;font-weight:600;transition:.15s}
+  .hbtn:hover{background:rgba(255,255,255,.20)}
+  .hbtn .n{background:var(--accent);color:#3a2a05;border-radius:20px;padding:0 7px;margin-left:6px;font-size:11px;font-weight:800}
+  /* Layout */
+  .layout{display:grid;grid-template-columns:300px 1fr;gap:18px;max-width:1500px;margin:18px auto;padding:0 18px}
+  aside.filters{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:4px 0;
+    align-self:start;position:sticky;top:82px;max-height:calc(100vh - 100px);overflow:auto;box-shadow:var(--shadow)}
+  .fsec{padding:13px 15px;border-bottom:1px solid var(--line)}
+  .fsec:last-child{border-bottom:0}
+  .fsec h3{margin:0 0 9px;font-size:11.5px;text-transform:uppercase;letter-spacing:.7px;color:var(--muted)}
+  .field{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px;background:#fff}
+  .row2{display:flex;gap:8px}
+  .chk{display:flex;align-items:center;gap:8px;padding:4px 2px;font-size:12.5px;cursor:pointer}
+  .chk input{accent-color:var(--navy2);width:15px;height:15px}
+  .townbox{max-height:172px;overflow:auto;border:1px solid var(--line);border-radius:8px;padding:6px 8px}
+  .townbox .grp{font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--accent-d);font-weight:800;margin:7px 0 2px}
+  .townbox .grp:first-child{margin-top:0}
+  .rangeval{font-size:12px;color:var(--navy2);font-weight:700;float:right}
+  input[type=range]{width:100%;accent-color:var(--accent-d)}
+  .clearbtn{width:100%;background:#fff;border:1px solid var(--line);color:var(--navy2);padding:9px;border-radius:8px;font-weight:600;font-size:12.5px}
+  .clearbtn:hover{background:var(--chip)}
+  /* KPIs */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow)}
+  .kpi .lab{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+  .kpi .val{font-size:22px;font-weight:800;margin-top:3px;color:var(--navy)}
+  .kpi .val small{font-size:13px;color:var(--muted);font-weight:600}
+  /* Toolbar */
+  .toolbar{display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+  .toolbar .count{font-size:14px;font-weight:700}
+  .toolbar .count span{color:var(--accent-d)}
+  .toolbar .sp{flex:1}
+  .toolbar label{font-size:12px;color:var(--muted)}
+  .seg{display:inline-flex;background:var(--chip);border-radius:9px;padding:3px;gap:3px}
+  .seg button{border:0;background:transparent;padding:6px 12px;border-radius:7px;font-size:12px;font-weight:700;color:var(--muted)}
+  .seg button.on{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+  /* Grid + cards */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:0;overflow:hidden;
+    box-shadow:var(--shadow);display:flex;flex-direction:column;position:relative;transition:.15s}
+  .card:hover{border-color:#cfd8e6;transform:translateY(-2px)}
+  /* Photo banner */
+  .thumb{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .thumb .ic{font-size:46px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.28))}
+  .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .thumb .ov{position:absolute;font-size:11px;font-weight:700}
+  .thumb .ov-score{top:9px;left:9px;width:34px;height:34px;border-radius:9px;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+  .thumb .ov-opp{top:11px;right:9px;background:rgba(255,255,255,.92);color:var(--accent-d);padding:3px 9px;border-radius:20px}
+  .thumb .ov-sv{bottom:9px;right:9px;background:rgba(15,36,56,.72);color:#fff;padding:4px 9px;border-radius:20px;text-decoration:none}
+  .thumb .ov-sv:hover{background:rgba(15,36,56,.92)}
+  .thumb .ov-tag{bottom:9px;left:9px;background:rgba(15,36,56,.55);color:#fff;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:600}
+  .thumb .ov-live{top:9px;left:9px;background:#0f9d8f;color:#fff;padding:5px 10px;border-radius:20px;font-size:10.5px;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+  .cardbody{padding:14px;display:flex;flex-direction:column;gap:9px}
+  .card h4{margin:0;font-size:15px;line-height:1.3}
+  .loc{font-size:12px;color:var(--muted)}
+  .loc b{color:var(--navy2)}
+  .loc a{color:var(--accent-d);text-decoration:none;font-weight:600}
+  .loc a:hover{text-decoration:underline}
+  .meta{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;font-size:12px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0}
+  .meta .k{color:var(--muted)}
+  .meta .v{font-weight:700;text-align:right}
+  .why{font-size:12.5px;color:#33465c;background:#f7f9fc;border-left:3px solid var(--accent);padding:8px 10px;border-radius:0 8px 8px 0}
+  .why b{color:var(--navy2)}
+  .subrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:11.5px}
+  .ilan{color:var(--muted)}
+  .ddl{padding:3px 9px;border-radius:20px;font-weight:700;white-space:nowrap}
+  .ddl-hot{background:#fdecec;color:#c0392b}
+  .ddl-warn{background:#fff4e2;color:#b9770f}
+  .ddl-ok{background:#eef4ee;color:#2f7a44}
+  .ddl-past{background:#eef1f5;color:#8a97a6}
+  .srclink{margin-left:auto;color:var(--accent-d);text-decoration:none;font-weight:700;white-space:nowrap}
+  .srclink:hover{text-decoration:underline}
+  .actions{display:flex;gap:7px;flex-wrap:wrap}
+  .abtn{flex:1;min-width:70px;border:1px solid var(--line);background:#fff;color:var(--navy2);padding:8px;border-radius:8px;font-size:12px;font-weight:600;transition:.15s}
+  .abtn:hover{background:var(--chip)}
+  .abtn.primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .abtn.primary:hover{background:var(--navy2)}
+  .abtn.star.on{background:var(--accent);border-color:var(--accent);color:#3a2a05}
+  .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted)}
+  /* Teşvik pills */
+  .incs{display:flex;gap:6px;flex-wrap:wrap;cursor:pointer}
+  .inc{font-size:10.5px;font-weight:700;background:#eaf6f1;color:#0e6f5c;border:1px solid #d1eae1;padding:3px 8px;border-radius:20px}
+  .inc.more{background:var(--chip);color:var(--muted);border-color:var(--line)}
+  .inclist{display:flex;flex-direction:column;gap:8px}
+  .incrow{display:flex;gap:9px;font-size:12.5px;background:#f7f9fc;border:1px solid var(--line);border-radius:9px;padding:9px 11px}
+  .incrow a{color:var(--accent-d);font-weight:700;text-decoration:none}
+  .incicon{font-size:16px;flex:0 0 auto}
+  .sentiment{margin-top:12px;font-size:12px;background:#fff7ea;border:1px solid #f0e2c6;border-radius:9px;padding:10px 12px;color:#5a4a2a}
+  .sentiment a{color:var(--accent-d);font-weight:700;text-decoration:none}
+  /* Map */
+  #map{height:600px;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);z-index:1}
+  .mapwarn{padding:50px 20px;text-align:center;color:var(--muted)}
+  .leaflet-popup-content{font-size:12.5px;line-height:1.55}
+  .leaflet-popup-content a{color:var(--accent-d);font-weight:700}
+  .gmap{width:100%;height:240px;border:0;border-radius:10px}
+  /* Modal */
+  .backdrop{position:fixed;inset:0;background:rgba(15,36,56,.55);display:none;z-index:2000;align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto}
+  .backdrop.open{display:flex}
+  .modal{background:#fff;border-radius:16px;max-width:760px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+  .mhead{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;border-radius:16px 16px 0 0;z-index:2}
+  .mhead h3{margin:0;font-size:16px}
+  .mhead .sp{flex:1}
+  .xbtn{background:var(--chip);border:0;width:32px;height:32px;border-radius:8px;font-size:17px;color:var(--muted)}
+  .mbody{padding:20px}
+  .seg2{display:inline-flex;background:var(--chip);border-radius:9px;padding:3px;gap:3px}
+  .seg2 button{border:0;background:transparent;padding:6px 12px;border-radius:7px;font-size:12px;font-weight:700;color:var(--muted)}
+  .seg2 button.on{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+  pre.proposal{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.3px;line-height:1.6;background:#f7f9fc;border:1px solid var(--line);border-radius:10px;padding:16px;color:#22303f;max-height:52vh;overflow:auto}
+  .feasgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .feasgrid label{font-size:11.5px;color:var(--muted);display:block;margin-bottom:4px}
+  .out{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}
+  .outcell{background:#f7f9fc;border:1px solid var(--line);border-radius:10px;padding:12px}
+  .outcell .l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+  .outcell .n{font-size:20px;font-weight:800;color:var(--navy);margin-top:2px}
+  .outcell.good .n{color:var(--hi)} .outcell.warn .n{color:var(--mid)}
+  .mfoot{padding:14px 20px;border-top:1px solid var(--line);display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+  .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:#fff;font-weight:700;font-size:13px}
+  a.mbtn{text-decoration:none;display:inline-block;color:var(--navy2)}
+  .mbtn.primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .steps{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 2px}
+  .step{flex:1;min-width:120px;background:#f7f9fc;border:1px solid var(--line);border-radius:10px;padding:11px 12px}
+  .step .n{width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-bottom:6px}
+  .step h5{margin:0 0 3px;font-size:13px}
+  .step p{margin:0;font-size:11.5px;color:var(--muted)}
+  .dl{display:grid;grid-template-columns:150px 1fr;gap:8px 14px;font-size:13px;margin:14px 0}
+  .dl .k{color:var(--muted)}
+  .note{font-size:11.5px;color:var(--muted);margin-top:12px;font-style:italic}
+  .cap{font-size:11px;color:var(--muted);margin:6px 0 0;font-style:italic}
+  footer{max-width:1500px;margin:26px auto;padding:18px;color:var(--muted);font-size:12px;text-align:center}
+  @media print{
+    header.top, .layout, footer{ display:none !important; }
+    .backdrop.open{ position:static !important; display:block !important; background:#fff !important; padding:0 !important; overflow:visible !important; }
+    .backdrop.open .modal{ max-width:100% !important; box-shadow:none !important; border-radius:0 !important; }
+    .backdrop.open .mhead, .backdrop.open .mfoot, .backdrop.open .seg2, .backdrop.open .feasgrid, .backdrop.open .out{ display:none !important; }
+    .backdrop.open pre.proposal{ max-height:none !important; overflow:visible !important; border:0 !important; background:#fff !important; padding:0 !important; font-size:11.5px !important; }
+    @page{ margin:1.4cm; }
+  }
+  @media(max-width:960px){
+    .layout{grid-template-columns:1fr}
+    aside.filters{position:static;max-height:none}
+    .kpis{grid-template-columns:repeat(2,1fr)}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="20" cy="20" r="18" stroke="#e0a12e" stroke-width="2" opacity=".5"/>
+      <circle cx="20" cy="20" r="11" stroke="#e0a12e" stroke-width="2" opacity=".8"/>
+      <circle cx="20" cy="20" r="3.2" fill="#e0a12e"/>
+      <path d="M20 20 L34 9" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="29" cy="13" r="2.4" fill="#fff"/>
+    </svg>
+    <div>
+      <h1>Fırsat Radarı</h1>
+      <p>EAST SUSSEX • GAYRİMENKUL & İŞLETME FIRSAT İSTİHBARATI</p>
+    </div>
+  </div>
+  <span class="demo-chip">DEMO</span>
+  <div class="sp"></div>
+  <button class="hbtn" onclick="openCouncil()">🏛️ Belediye Kaynakları</button>
+  <button class="hbtn" onclick="openFunds()">Teşvik & Fon Rehberi</button>
+  <button class="hbtn" onclick="openModel()">İş Akışı</button>
+  <button class="hbtn" onclick="openShortlist()">Kısa Liste<span class="n" id="slcount">0</span></button>
+</header>
+
+<div class="layout">
+  <!-- FILTERS -->
+  <aside class="filters" id="filters">
+    <div class="fsec"><h3>Arama</h3>
+      <input class="field" id="q" placeholder="Adres, kasaba, anahtar kelime…" data-f="q"></div>
+    <div class="fsec"><h3>Bütçe (£)</h3>
+      <div class="row2"><input class="field" id="pmin" type="number" placeholder="Min"><input class="field" id="pmax" type="number" placeholder="Max"></div></div>
+    <div class="fsec"><h3>İlçe (District)</h3><div id="districtBox"></div></div>
+    <div class="fsec"><h3>Kasaba / Bölge</h3><div class="townbox" id="townBox"></div></div>
+    <div class="fsec"><h3>Fırsat Tipi</h3><div id="oppBox"></div></div>
+    <div class="fsec"><h3>Mülk Tipi</h3><div id="propBox"></div></div>
+    <div class="fsec"><h3>Durum</h3><div id="statusBox"></div></div>
+    <div class="fsec"><h3>Veri Kaynağı</h3><div id="sourceBox"></div></div>
+    <div class="fsec"><h3>Teşvik / Avantaj</h3><div id="incBox"></div></div>
+    <div class="fsec"><h3>Büyüklük (sq ft)</h3>
+      <div class="row2"><input class="field" id="smin" type="number" placeholder="Min"><input class="field" id="smax" type="number" placeholder="Max"></div></div>
+    <div class="fsec"><h3>Min. Fırsat Skoru <span class="rangeval" id="scoreVal">0</span></h3>
+      <input type="range" id="minScore" min="0" max="100" value="0" step="5"></div>
+    <div class="fsec"><label class="chk"><input type="checkbox" id="onlyDeadline"> Sadece son tarihi olanlar</label></div>
+    <div class="fsec"><button class="clearbtn" onclick="clearFilters()">Filtreleri Temizle</button></div>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+    <div class="kpis" id="kpis"></div>
+    <div class="toolbar">
+      <div class="count"><span id="rcount">0</span> fırsat listeleniyor</div>
+      <div class="sp"></div>
+      <div class="seg viewseg">
+        <button class="on" data-v="list" onclick="setView('list')">☰ Liste</button>
+        <button data-v="map" onclick="setView('map')">🗺️ Harita</button>
+      </div>
+      <label for="sort">Sırala:</label>
+      <select class="field" id="sort" style="width:auto">
+        <option value="score">Fırsat skoru (yüksek→düşük)</option>
+        <option value="deadline">Son tarih (yakın→uzak)</option>
+        <option value="priceAsc">Fiyat (düşük→yüksek)</option>
+        <option value="priceDesc">Fiyat (yüksek→düşük)</option>
+        <option value="new">En yeni ilan</option>
+        <option value="size">Büyüklük (büyük→küçük)</option>
+      </select>
+    </div>
+    <div class="grid" id="results"></div>
+    <div id="map" style="display:none"></div>
+  </main>
+</div>
+
+<footer>
+  Fırsat Radarı — tek dosyalık demo. Kayıtlar <b>temsilî örnek verilerdir</b>; canlı sürümde Land Registry, planlama
+  başvuruları (PlanIt), The Gazette (tasfiye), konsey varlık kayıtları, business-rates boş mülk listeleri ve auction
+  katalogları beslenir. Harita (OpenStreetMap) ile Google Maps / Street View bağlantıları gerçek koordinatlara gider (internet gerekir).
+  Amaç: fırsatı tespit → fizibilite → proposal → sunum → anlaşma.
+</footer>
+
+<div class="backdrop" id="backdrop" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script>
+/* ---------- ÖRNEK VERİ (temsilî) ---------- */
+let DATA = [
+  {id:1,title:"Boş perakende dükkânı — üst kat konut potansiyeli",town:"Hastings",district:"Hastings",opp:"Atıl/Boş Bina",prop:"Perakende/Dükkan",price:78000,size:950,rateable:8600,status:"Boş",source:"Business Rates (Boş)",score:86,income:11500,date:"2026-07-06",why:"14 aydır boş, düşük rateable value. Zemin ticari + iki üst kat daireye dönüşüm için ideal (change-of-use)."},
+  {id:2,title:"Eski ofis bloğu — konuta dönüşüm fırsatı",town:"St Leonards-on-Sea",district:"Hastings",opp:"Change-of-Use Fırsatı",prop:"Ofis",price:435000,size:6400,rateable:41000,status:"Kısmen Boş",source:"Planlama Başvurusu",score:88,income:62000,date:"2026-07-02",why:"Permitted development ile 7-8 daire çıkabilir. Deniz manzarası, istasyona yürüme mesafesi."},
+  {id:3,title:"Kapanan mahalle pub'ı (tasfiye ilanı)",town:"Eastbourne",district:"Eastbourne",opp:"Distressed İşletme",prop:"Pub/Restoran",price:245000,size:3100,rateable:22000,status:"Kapanıyor",source:"Gazette (Tasfiye)",score:84,income:34000,date:"2026-07-08",why:"İşletmeciye winding-up petition düştü. Freehold; işletme devri veya konut dönüşümü için pazarlığa açık."},
+  {id:4,title:"Belediyeye ait eski kütüphane binası",town:"Bexhill-on-Sea",district:"Rother",opp:"Kamu/Belediye Mülkü",prop:"Karma Kullanım",price:310000,size:4200,rateable:0,status:"Boş",source:"Konsey Varlık Kaydı",score:80,income:38000,date:"2026-06-24",why:"Konsey varlık kaydında 'surplus' işaretli. Toplum + ticari karma kullanım; regenerasyon fonuyla uyumlu."},
+  {id:5,title:"Müzayedede karma kullanımlı bina (4 kat)",town:"Rye",district:"Rother",opp:"Müzayede (Auction)",prop:"Karma Kullanım",price:185000,size:1900,rateable:9800,status:"Müzayedede",source:"Auction Kataloğu",score:76,income:21000,date:"2026-07-05",why:"Rehber fiyat düşük, dönüşüm potansiyeli var (planlamaya tabi). Turistik lokasyon, kısa dönem kiralamaya uygun."},
+  {id:6,title:"Sanayi birimi — trade counter potansiyeli",town:"Uckfield",district:"Wealden",opp:"Ucuz Gayrimenkul",prop:"Endüstriyel/Depo",price:520000,size:9800,rateable:36000,status:"Boş",source:"Land Registry",score:69,income:58000,date:"2026-06-18",why:"m² başı maliyet bölge ortalamasının altında. Bölünüp küçük sanayi birimleri olarak kiralanabilir."},
+  {id:7,title:"Deniz kenarı otel — yenileme gerekli",town:"Eastbourne",district:"Eastbourne",opp:"Ucuz Gayrimenkul",prop:"Otel/Konaklama",price:1150000,size:14200,rateable:88000,status:"Satılık",source:"Land Registry",score:74,income:210000,date:"2026-06-15",why:"Uzun süredir satışta, fiyat düşürüldü. Butik otel / apart konaklama olarak yeniden konumlandırma fırsatı."},
+  {id:8,title:"Geliştirme arsası — 0.8 dönüm",town:"Hailsham",district:"Wealden",opp:"Arsa/Geliştirme",prop:"Arsa",price:640000,size:34800,rateable:0,status:"Satılık",source:"Planlama Başvurusu",score:72,income:0,date:"2026-06-28",why:"Yakın parselde konut planlaması onaylandı; emsal güçlü. 8-10 konutluk şema için uygun."},
+  {id:9,title:"Boş banka şubesi — köşe konum",town:"Lewes",district:"Lewes",opp:"Atıl/Boş Bina",prop:"Perakende/Dükkan",price:395000,size:2600,rateable:29000,status:"Boş",source:"Business Rates (Boş)",score:81,income:33000,date:"2026-07-01",why:"Ana cadde köşesi, yüksek yaya trafiği. Restoran/kafe veya karma kullanım için birinci sınıf lokasyon."},
+  {id:10,title:"Modernizasyon isteyen 3 daireli blok",town:"Newhaven",district:"Lewes",opp:"Ucuz Gayrimenkul",prop:"Konut",price:298000,size:2400,rateable:0,status:"Kısmen Boş",source:"Auction Kataloğu",score:78,income:31000,date:"2026-07-04",why:"Bütünüyle tek lot. Tadilat sonrası kira ile güçlü getiri; liman regenerasyonundan olumlu etkilenir."},
+  {id:11,title:"Distressed perakende zinciri şubesi",town:"Seaford",district:"Lewes",opp:"Distressed İşletme",prop:"Perakende/Dükkan",price:132000,size:1400,rateable:12500,status:"Kapanıyor",source:"Gazette (Tasfiye)",score:83,income:16000,date:"2026-07-09",why:"Şirket administration'a girdi; kısa vadede boşalacak. Sahibi hızlı satış için pazarlığa açık olabilir."},
+  {id:12,title:"Eski itfaiye deposu — belediye mülkü",town:"Crowborough",district:"Wealden",opp:"Kamu/Belediye Mülkü",prop:"Endüstriyel/Depo",price:275000,size:5200,rateable:0,status:"Boş",source:"Konsey Varlık Kaydı",score:73,income:29000,date:"2026-06-20",why:"Konsey elden çıkarma listesinde. Ticari/atölye veya konut dönüşümü (change-of-use) için değerlendirilebilir."},
+  {id:13,title:"Boş first-floor ofis katı",town:"Battle",district:"Rother",opp:"Change-of-Use Fırsatı",prop:"Ofis",price:165000,size:1800,rateable:11000,status:"Boş",source:"Planlama Başvurusu",score:70,income:15000,date:"2026-06-26",why:"Tarihi merkez; konut dönüşümüne uygun. Turistik konumda kısa dönem kiralama talebi yüksek."},
+  {id:14,title:"Sahil şeridi kafe + üst kat daire",town:"Pevensey Bay",district:"Wealden",opp:"Ucuz Gayrimenkul",prop:"Karma Kullanım",price:212000,size:1600,rateable:9400,status:"Satılık",source:"Land Registry",score:75,income:24000,date:"2026-06-30",why:"İşletme + konut aynı lotta. Sezonluk gelir + yıllık kira; düşük giriş maliyeti."},
+  {id:15,title:"Terk edilmiş dükkân sırası (2 birim)",town:"Hastings",district:"Hastings",opp:"Atıl/Boş Bina",prop:"Perakende/Dükkan",price:154000,size:2100,rateable:14000,status:"Boş",source:"Business Rates (Boş)",score:82,income:19000,date:"2026-07-07",why:"İki bitişik boş birim; birleştirilip tek büyük ünite veya karma kullanım yapılabilir. Regenerasyon bölgesinde."},
+  {id:16,title:"Auction: köy merkezinde eski postane",town:"Heathfield",district:"Wealden",opp:"Müzayede (Auction)",prop:"Karma Kullanım",price:143000,size:1500,rateable:8200,status:"Müzayedede",source:"Auction Kataloğu",score:71,income:16500,date:"2026-07-03",why:"Düşük rehber fiyat, hızlı işlem. Zemin ticari + konut; yerel talep istikrarlı."},
+  {id:17,title:"Boş depo + yard — gelişime açık",town:"Polegate",district:"Wealden",opp:"Arsa/Geliştirme",prop:"Endüstriyel/Depo",price:480000,size:12000,rateable:31000,status:"Boş",source:"Land Registry",score:68,income:52000,date:"2026-06-22",why:"Geniş yard alanı; self-storage veya trade park için yeniden geliştirme potansiyeli. Ana yola yakın."},
+  {id:18,title:"Konsey mülkü — kullanılmayan toplum salonu",town:"Peacehaven",district:"Lewes",opp:"Kamu/Belediye Mülkü",prop:"Karma Kullanım",price:225000,size:3400,rateable:0,status:"Boş",source:"Konsey Varlık Kaydı",score:72,income:26000,date:"2026-06-19",why:"Konsey surplus listesinde; toplum yararı + gelir modeli olan tekliflere açık. Uygun maliyetli edinim."},
+  {id:19,title:"Restoran (kapanış) — tam donanımlı",town:"Bexhill-on-Sea",district:"Rother",opp:"Distressed İşletme",prop:"Pub/Restoran",price:189000,size:2200,rateable:16500,status:"Kapanıyor",source:"Gazette (Tasfiye)",score:79,income:27000,date:"2026-07-06",why:"İşletme borç nedeniyle kapanıyor; ekipman dahil. Deniz yakını, yeniden açılış veya dönüşüm için uygun."},
+  {id:20,title:"Şehir merkezi ofis — boş 2 kat",town:"Eastbourne",district:"Eastbourne",opp:"Change-of-Use Fırsatı",prop:"Ofis",price:560000,size:8100,rateable:47000,status:"Kısmen Boş",source:"Planlama Başvurusu",score:77,income:70000,date:"2026-06-27",why:"Konut dönüşümü için güçlü aday (PD hakları). Merkezî konum; kira talebi yüksek."},
+  {id:21,title:"Ucuz uç birim — küçük yatırımcı için",town:"Ore",district:"Hastings",opp:"Ucuz Gayrimenkul",prop:"Konut",price:96000,size:780,rateable:0,status:"Satılık",source:"Auction Kataloğu",score:80,income:12000,date:"2026-07-08",why:"Düşük giriş, güçlü kira getirisi. Modernizasyon sonrası hızlı kiralanır; ilk yatırım için ideal."},
+  {id:22,title:"Miras kalan boş konut (probate)",town:"Seaford",district:"Lewes",opp:"Ucuz Gayrimenkul",prop:"Konut",price:265000,size:1100,rateable:0,status:"Boş",source:"Land Registry",score:74,income:18000,date:"2026-06-29",why:"Uzun süredir boş. Tadilat ve yeniden satış (flip) veya kiralama için marjı iyi."},
+  {id:23,title:"Boş sanayi bloğu — bölünebilir",town:"Hailsham",district:"Wealden",opp:"Atıl/Boş Bina",prop:"Endüstriyel/Depo",price:610000,size:15500,rateable:44000,status:"Boş",source:"Business Rates (Boş)",score:67,income:66000,date:"2026-06-17",why:"Tek kiracı çıktı; 4-5 küçük birime bölünüp çoklu kira geliri sağlanabilir. Boş rate muafiyeti penceresi var."},
+  {id:24,title:"Ana cadde karma bina — auction",town:"Bexhill-on-Sea",district:"Rother",opp:"Müzayede (Auction)",prop:"Karma Kullanım",price:238000,size:2800,rateable:15000,status:"Müzayedede",source:"Auction Kataloğu",score:78,income:29000,date:"2026-07-04",why:"Zemin dükkân + üst daireler. Rehber fiyat cazip; town-centre regenerasyon önceliği içinde."},
+  {id:25,title:"Boş dükkân — köşe, yüksek görünürlük",town:"Hove",district:"Brighton & Hove",opp:"Atıl/Boş Bina",prop:"Perakende/Dükkan",price:340000,size:1700,rateable:26000,status:"Boş",source:"Business Rates (Boş)",score:76,income:30000,date:"2026-07-02",why:"Yoğun cadde ve yüksek yaya trafiği; kafe/konsept perakende için güçlü, yüksek görünürlüklü köşe konum."},
+  {id:26,title:"Geliştirme parseli — konut onaylı emsal",town:"Ringmer",district:"Lewes",opp:"Arsa/Geliştirme",prop:"Arsa",price:420000,size:26000,rateable:0,status:"Satılık",source:"Planlama Başvurusu",score:70,income:0,date:"2026-06-21",why:"Komşu parselde onay var; 5-6 konut şeması makul. Köy genişleme sınırında."},
+  {id:27,title:"Kapanan showroom — geniş cephe",town:"Uckfield",district:"Wealden",opp:"Distressed İşletme",prop:"Perakende/Dükkan",price:355000,size:4600,rateable:33000,status:"Kapanıyor",source:"Gazette (Tasfiye)",score:73,income:38000,date:"2026-07-05",why:"Şirket tasfiyeye gidiyor. Büyük cepheli birim; perakende, jimnastik/leisure veya bölünmüş kullanım için uygun."},
+  {id:28,title:"Belediye arsası — küçük infill",town:"Lewes",district:"Lewes",opp:"Kamu/Belediye Mülkü",prop:"Arsa",price:180000,size:9000,rateable:0,status:"Satılık",source:"Konsey Varlık Kaydı",score:69,income:0,date:"2026-06-16",why:"Konsey elden çıkarma; 2-3 konutluk infill potansiyeli. Düşük edinim, planlamaya tabi."},
+  {id:101,real:true,title:"Pacific House — ofis süitleri (kiralık, ESCC)",town:"Eastbourne",district:"Eastbourne",opp:"Kamu/Belediye Mülkü",prop:"Ofis",price:null,size:null,rateable:null,status:"Kiralık (ESCC)",source:"Belediye (Canlı)",score:null,income:0,date:"2026-07-10",why:"Doğrudan East Sussex County Council'dan — Sovereign Harbour Innovation Park. Belediyeden edinim en avantajlı yol; kira/şartlar konsey belgesinde.",url:"https://www.eastsussex.gov.uk/media/c0ibdmmt/pacific-house-office-suites-to-let-current.pdf",contact:"property.estates@eastsussex.gov.uk"},
+  {id:102,real:true,title:"Sackville House — First Floor West (kiralık, ESCC)",town:"Lewes",district:"Lewes",opp:"Kamu/Belediye Mülkü",prop:"Ofis",price:null,size:null,rateable:null,status:"Kiralık (ESCC)",source:"Belediye (Canlı)",score:null,income:0,date:"2026-07-10",why:"East Sussex County Council ofis katı; belediyeden doğrudan kiralama/edinim yolu. Detay konsey belgesinde.",url:"https://www.eastsussex.gov.uk/media/03dii3te/first-floor-west-sackville-house-lewes.pdf",contact:"property.estates@eastsussex.gov.uk"},
+  {id:103,real:true,title:"County Hall — ofis alanı (kiralık, ESCC)",town:"Lewes",district:"Lewes",opp:"Kamu/Belediye Mülkü",prop:"Ofis",price:null,size:null,rateable:null,status:"Kiralık (ESCC)",source:"Belediye (Canlı)",score:null,income:0,date:"2026-07-10",why:"ESCC merkez ofis alanı; belediye mülkü. Kira/şartlar konsey belgesinde. Regenerasyon bölgesine yakın.",url:"https://www.eastsussex.gov.uk/media/qmbpjktu/lewes-county-hall-offices.pdf",contact:"property.estates@eastsussex.gov.uk"}
+];
+
+/* ---------- ilan linki + son tarih (temsilî) ---------- */
+const SOURCE_LINK = {
+  "Auction Kataloğu":"https://www.cliveemson.co.uk/",
+  "Gazette (Tasfiye)":"https://www.thegazette.co.uk/all-notices/content/129",
+  "Planlama Başvurusu":"https://www.planit.org.uk/",
+  "Konsey Varlık Kaydı":"https://www.rother.gov.uk/business/land-and-property/",
+  "Business Rates (Boş)":"https://www.gov.uk/business-rates-relief/empty-property-relief",
+  "Land Registry":"https://landregistry.data.gov.uk/"
+};
+function addDays(iso,n){const d=new Date(iso+"T00:00:00");d.setDate(d.getDate()+n);return d.toISOString().slice(0,10);}
+DATA.forEach(d=>{
+  if(d.real){ d.link=d.url; d.deadline=null; return; }
+  d.link = SOURCE_LINK[d.source] || "";
+  if(d.opp==="Müzayede (Auction)")      d.deadline={label:"Müzayede tarihi", date:addDays(d.date,21)};
+  else if(d.source==="Gazette (Tasfiye)") d.deadline={label:"Mahkeme/teklif tarihi", date:addDays(d.date,17)};
+  else if(d.opp==="Kamu/Belediye Mülkü")  d.deadline={label:"İlgi beyanı (EOI) son tarihi", date:addDays(d.date,32)};
+  else if(d.opp==="Arsa/Geliştirme")      d.deadline={label:"Teklif daveti son tarihi", date:addDays(d.date,40)};
+  else d.deadline=null;
+});
+
+/* ---------- yardımcılar ---------- */
+const fmt = n => "£" + Math.round(n).toLocaleString("en-GB");
+const uniq = a => [...new Set(a)];
+const DISTRICTS = ["Hastings","Rother","Wealden","Eastbourne","Lewes","Brighton & Hove"];
+const refurbRate = {"Perakende/Dükkan":48,"Ofis":55,"Endüstriyel/Depo":32,"Konut":72,"Karma Kullanım":60,"Arsa":0,"Otel/Konaklama":95,"Pub/Restoran":66};
+const useSuggest = {
+  "Perakende/Dükkan":"Zemin ticari (kafe/konsept perakende) + üst katlarda konut dönüşümü",
+  "Ofis":"Konuta dönüşüm (permitted development / change-of-use) veya serviced office",
+  "Endüstriyel/Depo":"Küçük sanayi / trade-counter birimlerine bölme veya self-storage",
+  "Konut":"Modernizasyon + kiralama; uygun yerlerde HMO veya kısa dönem kiralama",
+  "Karma Kullanım":"Zemin ticari + üst konut ile karma gelir modeli",
+  "Arsa":"Konut geliştirme şeması (planlama izniyle)",
+  "Otel/Konaklama":"Butik otel yenileme veya apart / serviced accommodation",
+  "Pub/Restoran":"İşletmeye devam / yeniden konumlandırma veya konut dönüşümü"
+};
+const scoreColor = s => s>=80 ? "var(--hi)" : s>=70 ? "var(--mid)" : "var(--lo)";
+const scoreHex   = s => s>=80 ? "#16a34a" : s>=70 ? "#d97706" : "#dc2626";
+function fmtDate(iso){return new Date(iso+"T00:00:00").toLocaleDateString("tr-TR",{day:"2-digit",month:"short",year:"numeric"});}
+function daysLeft(iso){const d=new Date(iso+"T00:00:00");const n=new Date();n.setHours(0,0,0,0);return Math.round((d-n)/86400000);}
+function ddlText(iso){const n=daysLeft(iso);return n>1?n+" gün kaldı":n===1?"yarın":n===0?"bugün":Math.abs(n)+" gün geçti";}
+function ddlClass(iso){const n=daysLeft(iso);return n<0?"ddl-past":n<=7?"ddl-hot":n<=21?"ddl-warn":"ddl-ok";}
+
+const TOWN_COORDS = {
+  "Hastings":[50.8543,0.5735],"St Leonards-on-Sea":[50.8600,0.5460],"Ore":[50.8730,0.6000],
+  "Bexhill-on-Sea":[50.8410,0.4720],"Battle":[50.9190,0.4870],"Rye":[50.9520,0.7330],
+  "Eastbourne":[50.7690,0.2900],"Hailsham":[50.8600,0.2580],"Crowborough":[51.0510,0.1630],
+  "Uckfield":[50.9700,0.0980],"Heathfield":[50.9690,0.2530],"Polegate":[50.8220,0.2440],
+  "Pevensey Bay":[50.8180,0.3390],"Lewes":[50.8740,0.0090],"Newhaven":[50.7930,0.0540],
+  "Peacehaven":[50.7930,-0.0010],"Seaford":[50.7700,0.1010],"Ringmer":[50.8930,0.0560],
+  "Hove":[50.8280,-0.1680]
+};
+function coordsOf(d){
+  if(d._ll) return d._ll;
+  const base = TOWN_COORDS[d.town] || [50.86,0.35];
+  const jx=(((d.id*37)%100)-50)/2600, jy=(((d.id*53)%100)-50)/2600;
+  d._ll=[base[0]+jx, base[1]+jy]; return d._ll;
+}
+const gmaps      = d=>{const[a,b]=coordsOf(d); return `https://www.google.com/maps/search/?api=1&query=${a.toFixed(5)},${b.toFixed(5)}`;};
+const streetview = d=>{const[a,b]=coordsOf(d); return `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${a.toFixed(5)},${b.toFixed(5)}`;};
+const gembed     = d=>{const[a,b]=coordsOf(d); return `https://maps.google.com/maps?q=${a.toFixed(5)},${b.toFixed(5)}&z=16&output=embed`;};
+const propIcon={"Perakende/Dükkan":"🏪","Ofis":"🏢","Endüstriyel/Depo":"🏭","Konut":"🏠","Karma Kullanım":"🏬","Arsa":"🏗️","Otel/Konaklama":"🏨","Pub/Restoran":"🍽️"};
+const propGrad={"Perakende/Dükkan":"linear-gradient(135deg,#2b6cb0,#173f63)","Ofis":"linear-gradient(135deg,#4a5568,#2d3748)","Endüstriyel/Depo":"linear-gradient(135deg,#7b6f56,#453f31)","Konut":"linear-gradient(135deg,#2f855a,#1b4d34)","Karma Kullanım":"linear-gradient(135deg,#6b46c1,#432a82)","Arsa":"linear-gradient(135deg,#5a7d2a,#38511a)","Otel/Konaklama":"linear-gradient(135deg,#b7791f,#7f5311)","Pub/Restoran":"linear-gradient(135deg,#b83280,#78204f)"};
+function banner(d,h){
+  const g=propGrad[d.prop]||"linear-gradient(135deg,#334155,#1e293b)";
+  const inner = d.photo ? `<img src="${d.photo}" alt="" onerror="this.style.display='none'">` : `<span class="ic">${propIcon[d.prop]||"🏢"}</span>`;
+  const scoreBadge = (d.score==null) ? `<span class="ov ov-live">● CANLI</span>` : `<span class="ov ov-score" style="background:${scoreColor(d.score)}">${d.score}</span>`;
+  return `<div class="thumb" style="height:${h}px;background:${g}">
+     ${inner}
+     ${scoreBadge}
+     <span class="ov ov-opp">${d.opp}</span>
+     <a class="ov ov-sv" href="${streetview(d)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">📷 Street View</a>
+     ${d.photo?"":'<span class="ov ov-tag">Temsilî görsel</span>'}
+   </div>`;
+}
+
+/* ---------- teşvik / avantaj kataloğu (araştırmaya dayalı, temsilî) ---------- */
+const INCENTIVES = {
+  loan:{type:"loan",icon:"🏦",label:"Geri ödemeli kredi",enLabel:"Repayable growth loan",
+    detail:"Let's Do Business Finance (CDFI) Büyüme Kredisi £25k–£150k; East Sussex Growth Hub üzerinden.",
+    enDetail:"Let's Do Business Finance (CDFI) growth loans £25k–£150k via East Sussex Growth Hub.",
+    link:"https://eastsussexgrowthhub.org.uk/business-growth-loans-lets-do-business-finance/"},
+  ukspf:{type:"grant",icon:"💷",label:"Yerel hibe (UKSPF)",enLabel:"Local grant (UKSPF)",
+    detail:"UK Shared Prosperity Fund işletme hibeleri (Hastings 2025-26 ~£474k; küçük projelere £10k'ya kadar).",
+    enDetail:"UK Shared Prosperity Fund business grants (Hastings 2025-26 ~£474k; up to £10k for small projects).",
+    link:"https://www.hastings.gov.uk/regeneration/ukspf/UKSPF-2025-26/"},
+  highstreet:{type:"grant",icon:"🏬",label:"High Street desteği",enLabel:"High-street support",
+    detail:"Hastings/Bexhill/Rye/Battle high-street iyileştirme fonu (£260k, Levelling Up Partnerships).",
+    enDetail:"High-street improvement funding for Hastings/Bexhill/Rye/Battle (£260k, Levelling Up Partnerships).",
+    link:"https://www.gov.uk/government/news/40-million-levelling-up-boost-for-east-sussex"},
+  prideinplace:{type:"grant",icon:"🎯",label:"Pride in Place fonu",enLabel:"Pride in Place funding",
+    detail:"Bexhill £20M / Hastings £20M, 10 yıllık; town-centre işletme ve mülk canlandırma (Nisan 2026+).",
+    enDetail:"Bexhill £20M / Hastings £20M over 10 years; town-centre business & property revitalisation (Apr 2026+).",
+    link:"https://www.hastings.gov.uk/regeneration/plan-for-neighbourhoods/Regeneration-plan/"},
+  peppercorn:{type:"peppercorn",icon:"🔑",label:"Peppercorn / sembolik kira",enLabel:"Peppercorn (nominal) rent",
+    detail:"Kamu mülkünde Community Asset Transfer: 25+ yıl, nominal (peppercorn) kira, genelde FRI; toplum-yararı projeler.",
+    enDetail:"Community Asset Transfer of council assets: 25+ yr lease at nominal (peppercorn) rent, usually FRI; community benefit.",
+    link:"https://www.eastsussex.gov.uk/your-council/about/property/sale-rent"},
+  rentalauction:{type:"rentfree",icon:"⚖️",label:"High Street Rental Auction",enLabel:"High Street Rental Auction",
+    detail:"365+ gün boş ticari birimlerde konsey 1–5 yıllık kira açık artırması ('right to rent') düzenleyebilir.",
+    enDetail:"Councils can auction 1–5 yr leases on units empty 365+ days ('right to rent').",
+    link:"https://www.gov.uk/government/news/high-streets-to-be-revitalised-with-new-legal-powers"},
+  meanwhile:{type:"rentfree",icon:"🕒",label:"Meanwhile / pop-up (kira muafiyeti)",enLabel:"Meanwhile / pop-up (rent-free)",
+    detail:"Boş birimlerde geçici düşük/sıfır kira + indirimli rate ile pop-up kullanım modeli (örn. Meanwhile On).",
+    enDetail:"Temporary low/zero-rent, reduced-rates pop-up use for vacant units (e.g. Meanwhile On).",
+    link:"https://www.westminster.gov.uk/meanwhile-on"},
+  vat:{type:"tax",icon:"🧾",label:"%5 indirimli VAT (boş konut)",enLabel:"5% reduced VAT (empty home)",
+    detail:"2+ yıl boş konutun yenilenmesinde %5 VAT (10+ yıl + kendi oturursa sıfır). Kanıt: Empty Property Officer yazısı.",
+    enDetail:"5% VAT on renovating a home empty 2+ yrs (zero if empty 10+ yrs & owner-occupied). Evidence: Empty Property Officer letter.",
+    link:"https://www.no-use-empty.org.uk/advice-and-guidance/property-tax-and-vat/reduced-vat-schemes/"},
+  emptyrates:{type:"tax",icon:"🏷️",label:"Boş mülk rate muafiyeti",enLabel:"Empty property rate relief",
+    detail:"Boş ticari mülk 3 ay (sanayi 6 ay) business rates muafiyeti; düşük rateable'da devam edebilir.",
+    enDetail:"Empty commercial property gets 3 months (6 for industrial) rates relief; may continue at low rateable value.",
+    link:"https://www.gov.uk/apply-for-business-rate-relief/exempted-buildings-and-empty-buildings-relief"},
+  partnership:{type:"partnership",icon:"🤝",label:"Geliştirme ortaklığı (BOT benzeri)",enLabel:"Development partnership (BOT-style)",
+    detail:"Kamu arsa/mülkünde uzun kiralama + geliştirme yükümlülüğü + devir (development agreement / JV); şartlar müzakereye tabi.",
+    enDetail:"Council land/asset via long lease + development obligation + reversion (development agreement / JV); terms negotiable.",
+    link:"https://www.rother.gov.uk/business/land-and-property/"}
+};
+const INC_TYPES=[["grant","Hibe"],["loan","Kredi"],["peppercorn","Peppercorn / sembolik kira"],["rentfree","Kira muafiyeti / meanwhile"],["tax","VAT / rate avantajı"],["partnership","BOT / ortaklık"]];
+function incentivesOf(d){
+  const out=[], seen=new Set();
+  const add=k=>{const i=INCENTIVES[k]; if(i&&!seen.has(k)){seen.add(k); out.push(i);}};
+  add("loan");
+  const townDist=(d.district==="Hastings"||d.district==="Rother");
+  const commercial=["Perakende/Dükkan","Karma Kullanım","Pub/Restoran","Ofis"].includes(d.prop);
+  if(townDist&&["Perakende/Dükkan","Karma Kullanım","Pub/Restoran"].includes(d.prop)){add("highstreet");add("prideinplace");}
+  if(commercial)add("ukspf");
+  if(d.opp==="Kamu/Belediye Mülkü"){add("peppercorn");add("partnership");}
+  if(d.opp==="Atıl/Boş Bina"||d.status==="Boş"||d.status==="Kısmen Boş"){add("rentalauction");add("meanwhile");add("emptyrates");}
+  if(d.prop==="Konut"||d.opp==="Change-of-Use Fırsatı"){add("vat");}
+  if(d.opp==="Arsa/Geliştirme"){add("partnership");if(townDist)add("prideinplace");}
+  return out;
+}
+const SENTIMENT={
+  "Hastings":{txt:"Pride in Place istişaresine ~4.000 kişi katıldı; Public Realm projesine ~1.000 görüş. Öne çıkanlar: boş binaların doldurulması, canlı town-centre (Queens Rd/Priory Meadow), temiz-güvenli sokaklar, spor/oyun alanları.",en:"~4,000 responded to the Pride in Place consultation; ~1,000 to the Public Realm project. Priorities: filling empty buildings, a lively town centre, cleaner/safer streets, sports & play facilities.",link:"https://lovehastings.com/hastings-pride-in-place-first-stage-consultation-analysis/"},
+  "Rother":{txt:"Bexhill Neighbourhood Board geniş topluluk/işletme istişaresi yaptı; öncelik town-centre'da gelişen işletmeler, footfall ve perakende/F&B sürdürülebilirliği; Sidley'de beceri/istihdam.",en:"Bexhill Neighbourhood Board ran broad community/business engagement; priorities: thriving town-centre businesses, footfall, retail/F&B sustainability; skills/employment in Sidley.",link:"https://bexhillneighbourhoodboard.co.uk/news/bexhill-neighbourhood-board-plan-the-first-4-years"},
+  "_default":{txt:"Bölgesel istişarelerde ortak talepler: boş birimlerin doldurulması, canlı yüksek cadde, yerel istihdam ve iyileştirilmiş kamusal alan.",en:"Regional consultations consistently ask for: filling empty units, a lively high street, local jobs and improved public realm.",link:"https://www.eastsussex.gov.uk/business/support/grants"}
+};
+function sentimentOf(dist){return SENTIMENT[dist]||SENTIMENT._default;}
+function incPills(d){
+  const list=incentivesOf(d); if(!list.length)return"";
+  const show=list.slice(0,3).map(i=>`<span class="inc" title="${i.detail.replace(/"/g,'&quot;')}">${i.icon} ${i.label}</span>`).join("");
+  const more=list.length>3?`<span class="inc more">+${list.length-3}</span>`:"";
+  return `<div class="incs" onclick="openDetail(${d.id})" title="Detayda tüm teşvikler">${show}${more}</div>`;
+}
+function incBlockTR(d){
+  const inc=incentivesOf(d).map(i=>`   • ${i.label}: ${i.detail}\n     ${i.link}`).join("\n");
+  const s=sentimentOf(d.district);
+  return `7. TEŞVİK & AVANTAJLAR (temsilî uygunluk — başvuru şartlarına tabi)\n${inc}\n\n8. KAMU GÖRÜŞÜ (${d.district})\n   ${s.txt}\n   ${s.link}`;
+}
+function incBlockEN(d){
+  const inc=incentivesOf(d).map(i=>`   • ${i.enLabel}: ${i.enDetail}\n     ${i.link}`).join("\n");
+  const s=sentimentOf(d.district);
+  return `7. INCENTIVES & ADVANTAGES (indicative eligibility — subject to application)\n${inc}\n\n8. PUBLIC SENTIMENT (${d.district})\n   ${s.en}\n   ${s.link}`;
+}
+
+/* ---------- filtre UI ---------- */
+function makeChecks(boxId, values, fkey){
+  document.getElementById(boxId).innerHTML =
+    values.map(v=>`<label class="chk"><input type="checkbox" data-f="${fkey}" value="${v}"> ${v}</label>`).join("");
+}
+makeChecks("districtBox", DISTRICTS, "district");
+makeChecks("oppBox", uniq(DATA.map(d=>d.opp)).sort(), "opp");
+makeChecks("propBox", uniq(DATA.map(d=>d.prop)).sort(), "prop");
+makeChecks("statusBox", uniq(DATA.map(d=>d.status)).sort(), "status");
+makeChecks("sourceBox", uniq(DATA.map(d=>d.source)).sort(), "source");
+(function(){
+  let html="";
+  DISTRICTS.forEach(d=>{
+    const towns=uniq(DATA.filter(x=>x.district===d).map(x=>x.town)).sort();
+    if(!towns.length) return;
+    html+=`<div class="grp">${d}</div>`+towns.map(t=>`<label class="chk"><input type="checkbox" data-f="town" value="${t}"> ${t}</label>`).join("");
+  });
+  document.getElementById("townBox").innerHTML=html;
+})();
+document.getElementById("incBox").innerHTML=INC_TYPES.map(([v,l])=>`<label class="chk"><input type="checkbox" data-f="inc" value="${v}"> ${l}</label>`).join("");
+
+/* ---------- durum & render ---------- */
+const shortlist = new Set();
+const getChecked = f => [...document.querySelectorAll(`input[data-f="${f}"]:checked`)].map(x=>x.value);
+const val = id => document.getElementById(id).value.trim();
+
+function applyFilters(){
+  const q=val("q").toLowerCase();
+  const pmin=parseFloat(val("pmin")), pmax=parseFloat(val("pmax"));
+  const smin=parseFloat(val("smin")), smax=parseFloat(val("smax"));
+  const minScore=+document.getElementById("minScore").value;
+  const onlyDdl=document.getElementById("onlyDeadline").checked;
+  const dSel=getChecked("district"),tSel=getChecked("town"),oSel=getChecked("opp"),
+        prSel=getChecked("prop"),stSel=getChecked("status"),srSel=getChecked("source");
+  const incSel=getChecked("inc");
+
+  let res=DATA.filter(d=>{
+    if(q){const hay=(d.title+" "+d.town+" "+d.district+" "+d.why+" "+d.prop+" "+d.opp).toLowerCase(); if(!hay.includes(q))return false;}
+    if(d.price==null){ if(!isNaN(pmin)||!isNaN(pmax))return false; }
+    else { if(!isNaN(pmin)&&d.price<pmin)return false; if(!isNaN(pmax)&&d.price>pmax)return false; }
+    if(d.size==null){ if(!isNaN(smin)||!isNaN(smax))return false; }
+    else { if(!isNaN(smin)&&d.size<smin)return false; if(!isNaN(smax)&&d.size>smax)return false; }
+    if(d.score==null){ if(minScore>0)return false; } else if(d.score<minScore)return false;
+    if(onlyDdl&&!d.deadline)return false;
+    if(dSel.length&&!dSel.includes(d.district))return false;
+    if(tSel.length&&!tSel.includes(d.town))return false;
+    if(oSel.length&&!oSel.includes(d.opp))return false;
+    if(prSel.length&&!prSel.includes(d.prop))return false;
+    if(stSel.length&&!stSel.includes(d.status))return false;
+    if(srSel.length&&!srSel.includes(d.source))return false;
+    if(incSel.length){const t=incentivesOf(d).map(x=>x.type); if(!incSel.some(x=>t.includes(x)))return false;}
+    return true;
+  });
+  const sort=document.getElementById("sort").value;
+  res.sort((a,b)=>{
+    if(sort==="priceAsc")return a.price-b.price;
+    if(sort==="priceDesc")return b.price-a.price;
+    if(sort==="new")return b.date.localeCompare(a.date);
+    if(sort==="size")return b.size-a.size;
+    if(sort==="deadline"){
+      const av=a.deadline?a.deadline.date:"9999", bv=b.deadline?b.deadline.date:"9999";
+      return av.localeCompare(bv);
+    }
+    return b.score-a.score;
+  });
+  return res;
+}
+
+function renderKPIs(list){
+  const total=list.length;
+  const sc=list.filter(d=>d.score!=null);
+  const avg=sc.length?Math.round(sc.reduce((s,d)=>s+d.score,0)/sc.length):0;
+  const value=list.reduce((s,d)=>s+(d.price||0),0);
+  const soon=list.filter(d=>d.deadline&&daysLeft(d.deadline.date)>=0&&daysLeft(d.deadline.date)<=21).length;
+  document.getElementById("kpis").innerHTML=`
+    <div class="kpi"><div class="lab">Toplam Fırsat</div><div class="val">${total}</div></div>
+    <div class="kpi"><div class="lab">Ortalama Skor</div><div class="val">${avg}<small>/100</small></div></div>
+    <div class="kpi"><div class="lab">Toplam Rehber Değer</div><div class="val">${value>=1e6?("£"+(value/1e6).toFixed(1)+"M"):fmt(value)}</div></div>
+    <div class="kpi"><div class="lab">Son Tarihi Yaklaşan (≤21g)</div><div class="val">${soon}</div></div>`;
+}
+
+function ddlChip(d){
+  if(!d.deadline) return "";
+  return `<span class="ddl ${ddlClass(d.deadline.date)}">⏳ ${d.deadline.label}: ${fmtDate(d.deadline.date)} · ${ddlText(d.deadline.date)}</span>`;
+}
+
+function card(d){
+  const on=shortlist.has(d.id)?"on":"";
+  const priceCell = d.real ? "Konseyden" : fmt(d.price);
+  const sizeCell  = (d.real||d.size==null) ? "—" : d.size.toLocaleString("en-GB")+" sqft";
+  const rateCell  = d.real ? "—" : (d.rateable?fmt(d.rateable):"—");
+  const acts = d.real
+    ? `<button class="abtn" onclick="openDetail(${d.id})">Detay</button>
+        <a class="abtn primary" href="${d.url}" target="_blank" rel="noopener">Konsey Belgesi ↗</a>
+        <button class="abtn star ${on}" onclick="toggleStar(${d.id},this)">${on?"★":"☆"}</button>`
+    : `<button class="abtn" onclick="openDetail(${d.id})">Detay</button>
+        <button class="abtn" onclick="openFeas(${d.id})">Fizibilite</button>
+        <button class="abtn primary" onclick="openProposal(${d.id})">Proposal</button>
+        <button class="abtn star ${on}" onclick="toggleStar(${d.id},this)">${on?"★":"☆"}</button>`;
+  return `<div class="card">
+    ${banner(d,132)}
+    <div class="cardbody">
+      <h4>${d.title}</h4>
+      <div class="loc"><b>${d.town}</b> · ${d.district} · <a href="#" onclick="openInMap(${d.id});return false">Haritada göster</a></div>
+      <div class="meta">
+        <div class="k">Rehber fiyat</div><div class="v">${priceCell}</div>
+        <div class="k">Büyüklük</div><div class="v">${sizeCell}</div>
+        <div class="k">Mülk tipi</div><div class="v">${d.prop}</div>
+        <div class="k">Durum</div><div class="v">${d.status}</div>
+        <div class="k">Rateable</div><div class="v">${rateCell}</div>
+        <div class="k">Kaynak</div><div class="v" style="font-size:11px">${d.source}</div>
+      </div>
+      <div class="why"><b>${d.real?"Neden avantajlı?":"Neden fırsat?"}</b> ${d.why}</div>
+      <div class="subrow">
+        <span class="ilan">İlan: ${fmtDate(d.date)}</span>
+        ${ddlChip(d)}
+        ${d.link?`<a class="srclink" href="${d.link}" target="_blank" rel="noopener">Kaynağı Aç ↗</a>`:""}
+      </div>
+      ${incPills(d)}
+      <div class="actions">${acts}</div>
+    </div>
+  </div>`;
+}
+
+function render(){
+  const list=applyFilters();
+  renderKPIs(list);
+  document.getElementById("rcount").textContent=list.length;
+  document.getElementById("results").innerHTML = list.length
+    ? list.map(card).join("")
+    : `<div class="empty"><h3>Kriterlere uygun fırsat yok</h3><p>Filtreleri gevşetmeyi deneyin.</p></div>`;
+  if(currentView==="map") refreshMarkers();
+}
+
+/* ---------- etkileşim ---------- */
+document.getElementById("filters").addEventListener("input", render);
+document.getElementById("sort").addEventListener("change", render);
+document.getElementById("minScore").addEventListener("input", e=>{document.getElementById("scoreVal").textContent=e.target.value;});
+function clearFilters(){
+  document.querySelectorAll('#filters input[type=checkbox]').forEach(c=>c.checked=false);
+  ["q","pmin","pmax","smin","smax"].forEach(id=>document.getElementById(id).value="");
+  document.getElementById("minScore").value=0; document.getElementById("scoreVal").textContent="0";
+  render();
+}
+function toggleStar(id,btn){
+  if(shortlist.has(id))shortlist.delete(id); else shortlist.add(id);
+  document.getElementById("slcount").textContent=shortlist.size;
+  btn.classList.toggle("on"); btn.textContent=shortlist.has(id)?"★":"☆";
+}
+
+/* ---------- modal ---------- */
+const backdrop=document.getElementById("backdrop");
+function showModal(html){document.getElementById("modal").innerHTML=html; backdrop.classList.add("open");}
+function closeModal(){backdrop.classList.remove("open");}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
+
+/* ---------- fizibilite ---------- */
+function feasCalc(d,over){
+  const purchase=over?.purchase ?? d.price;
+  const refurb  =over?.refurb   ?? Math.round(d.size*(refurbRate[d.prop]||40));
+  const acqPct  =over?.acqPct   ?? 6;
+  const income  =over?.income   ?? d.income;
+  const opexPct =over?.opexPct  ?? 28;
+  const acq=Math.round(purchase*acqPct/100);
+  const total=purchase+refurb+acq;
+  const net=Math.round(income*(1-opexPct/100));
+  return {purchase,refurb,acqPct,acq,income,opexPct,total,net,gross:income/total*100,netY:net/total*100,payback:net>0?total/net:0};
+}
+function openFeas(id){
+  const d=DATA.find(x=>x.id===id), f=feasCalc(d);
+  showModal(`
+    <div class="mhead"><h3>Fizibilite — ${d.title}</h3><div class="sp"></div><button class="xbtn" onclick="closeModal()">✕</button></div>
+    <div class="mbody">
+      <div class="loc" style="margin-bottom:14px"><b>${d.town}</b> · ${d.district} · ${d.prop} · ${d.status}</div>
+      <div class="feasgrid">
+        <div><label>Satın alma (£)</label><input class="field fi" id="f_purchase" type="number" value="${f.purchase}"></div>
+        <div><label>Tahmini tadilat (£)</label><input class="field fi" id="f_refurb" type="number" value="${f.refurb}"></div>
+        <div><label>Edinim maliyeti (%)</label><input class="field fi" id="f_acq" type="number" value="${f.acqPct}"></div>
+        <div><label>Yıllık brüt gelir (£)</label><input class="field fi" id="f_income" type="number" value="${f.income}"></div>
+        <div><label>İşletme gideri / voids (%)</label><input class="field fi" id="f_opex" type="number" value="${f.opexPct}"></div>
+      </div>
+      <div class="out" id="feasOut"></div>
+      <p class="note">Rakamlar temsilîdir; due diligence ve inşaat teklifi sonrası netleşir. Arsa/geliştirmede gelir 0 görünebilir (çıkış = satış).</p>
+    </div>
+    <div class="mfoot">
+      <button class="mbtn" onclick="closeModal()">Kapat</button>
+      <button class="mbtn primary" onclick="openProposal(${d.id})">Proposal'a Aktar</button>
+    </div>`);
+  const paint=()=>{
+    const o=feasCalc(d,{purchase:+f_purchase.value,refurb:+f_refurb.value,acqPct:+f_acq.value,income:+f_income.value,opexPct:+f_opex.value});
+    document.getElementById("feasOut").innerHTML=`
+      <div class="outcell"><div class="l">Toplam Yatırım</div><div class="n">${fmt(o.total)}</div></div>
+      <div class="outcell"><div class="l">Net Yıllık Gelir</div><div class="n">${fmt(o.net)}</div></div>
+      <div class="outcell ${o.gross>=8?'good':o.gross>=5?'warn':''}"><div class="l">Brüt Getiri</div><div class="n">${o.gross.toFixed(1)}%</div></div>
+      <div class="outcell ${o.netY>=6?'good':o.netY>=4?'warn':''}"><div class="l">Net Getiri</div><div class="n">${o.netY.toFixed(1)}%</div></div>
+      <div class="outcell"><div class="l">Geri Ödeme</div><div class="n">${o.payback?o.payback.toFixed(1)+" yıl":"—"}</div></div>
+      <div class="outcell"><div class="l">Edinim Maliyeti</div><div class="n">${fmt(o.acq)}</div></div>`;
+  };
+  document.querySelectorAll(".fi").forEach(i=>i.addEventListener("input",paint)); paint();
+}
+
+/* ---------- detay ---------- */
+function openDetail(id){
+  const d=DATA.find(x=>x.id===id), f=feasCalc(d), ll=coordsOf(d);
+  showModal(`
+    <div class="mhead">${d.score==null?`<div style="background:#0f9d8f;color:#fff;padding:6px 10px;border-radius:8px;font-weight:800;font-size:12px">CANLI</div>`:`<div class="ov-score" style="position:static;width:34px;height:34px;border-radius:9px;background:${scoreColor(d.score)};color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800">${d.score}</div>`}
+      <h3>${d.title}</h3><div class="sp"></div><button class="xbtn" onclick="closeModal()">✕</button></div>
+    <div class="mbody">
+      <div style="border-radius:12px;overflow:hidden">${banner(d,160)}</div>
+      <p class="cap">Görsel temsilîdir; canlı sürümde kaynak/ajans fotoğrafı gösterilir. Gerçek güncel görüntü için Street View.</p>
+      <div class="dl">
+        <div class="k">Konum</div><div>${d.town}, ${d.district}, East Sussex</div>
+        <div class="k">Fırsat / Mülk tipi</div><div>${d.opp} · ${d.prop}</div>
+        <div class="k">Durum</div><div>${d.status}</div>
+        <div class="k">Rehber fiyat</div><div><b>${d.real?"Konseyden / belgede":fmt(d.price)}</b></div>
+        <div class="k">Büyüklük</div><div>${(d.real||d.size==null)?"Belgede":d.size.toLocaleString("en-GB")+" sqft"}</div>
+        <div class="k">Rateable value</div><div>${d.real?"—":(d.rateable?fmt(d.rateable):"—")}</div>
+        ${d.real&&d.contact?`<div class="k">İletişim</div><div>${d.contact}</div>`:""}
+        <div class="k">Veri kaynağı</div><div>${d.source} ${d.link?`· <a href="${d.link}" target="_blank" rel="noopener" style="color:var(--accent-d);font-weight:700">ilanı aç ↗</a>`:""}</div>
+        <div class="k">İlan tarihi</div><div>${fmtDate(d.date)}</div>
+        ${d.deadline?`<div class="k">Son tarih</div><div><b style="color:${daysLeft(d.deadline.date)<=7?'#c0392b':'inherit'}">${d.deadline.label}: ${fmtDate(d.deadline.date)}</b> · ${ddlText(d.deadline.date)}</div>`:""}
+      </div>
+      <div class="why"><b>${d.real?"Neden avantajlı?":"Neden fırsat?"}</b> ${d.why}</div>
+      <p style="margin:14px 0 4px"><b>Önerilen kullanım:</b> ${useSuggest[d.prop]||"—"}</p>
+      ${d.real?`<p style="margin:0"><b>Not:</b> Bu, belediyeden gelen <b>gerçek</b> bir kayıt. Rakamlar konsey belgesinden alınıp fizibiliteye işlenecek.</p>`:`<p style="margin:0"><b>Hızlı fizibilite:</b> Toplam yatırım ~${fmt(f.total)} · Net getiri ~${f.netY.toFixed(1)}% · Geri ödeme ~${f.payback?f.payback.toFixed(1)+" yıl":"—"}</p>`}
+      <h4 style="margin:16px 0 6px;font-size:14px">Avantajlar / Teşvikler <span style="font-weight:400;color:var(--muted);font-size:11px">(temsilî uygunluk — başvuru şartlarına tabi)</span></h4>
+      <div class="inclist">
+        ${incentivesOf(d).map(i=>`<div class="incrow"><span class="incicon">${i.icon}</span><div><b>${i.label}</b> — ${i.detail} <a href="${i.link}" target="_blank" rel="noopener">kaynak ↗</a></div></div>`).join("")}
+      </div>
+      <div class="sentiment"><b>Kamu görüşü (${d.district}):</b> ${sentimentOf(d.district).txt} <a href="${sentimentOf(d.district).link}" target="_blank" rel="noopener">istişare ↗</a></div>
+      <h4 style="margin:16px 0 6px;font-size:14px">Konum & Harita</h4>
+      <div class="loc" style="margin-bottom:6px">Koordinat: ${ll[0].toFixed(4)}, ${ll[1].toFixed(4)}</div>
+      <iframe class="gmap" src="${gembed(d)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+        <a class="mbtn" href="${streetview(d)}" target="_blank" rel="noopener">📷 Street View'da Aç</a>
+        <a class="mbtn" href="${gmaps(d)}" target="_blank" rel="noopener">🗺️ Google Maps'te Aç</a>
+        <button class="mbtn" onclick="openInMap(${d.id})">📍 Radar Haritasında</button>
+      </div>
+    </div>
+    <div class="mfoot">
+      ${d.real
+        ? `<a class="mbtn" href="${d.url}" target="_blank" rel="noopener">Konsey Belgesi ↗</a><button class="mbtn primary" onclick="closeModal()">Kapat</button>`
+        : `<button class="mbtn" onclick="openFeas(${d.id})">Fizibilite</button><button class="mbtn primary" onclick="openProposal(${d.id})">Proposal Hazırla</button>`}
+    </div>`);
+}
+
+/* ---------- proposal ---------- */
+let propState={id:null,aud:"ortak",lang:"tr"};
+function openProposal(id){propState={id,aud:"ortak",lang:"tr"}; paintProposal();}
+function setAud(a){propState.aud=a; paintProposal();}
+function setLang(l){propState.lang=l; paintProposal();}
+function proposalText(d){
+  const f=feasCalc(d);
+  const today=new Date().toLocaleDateString(propState.lang==="tr"?"tr-TR":"en-GB");
+  const ddlTR = d.deadline?` | Son tarih: ${fmtDate(d.deadline.date)} (${d.deadline.label})`:"";
+  const ddlEN = d.deadline?` | Deadline: ${fmtDate(d.deadline.date)} (${d.deadline.label})`:"";
+  if(propState.lang==="tr"){
+    const alici=propState.aud==="ortak"?"Yatırımcı / Geliştirici":"İlgili Konsey / Kurum (mülk sahibi)";
+    const kapanis=propState.aud==="ortak"
+      ? `6. HAYATA GEÇİRME MODELİ
+   • Analiz/hazırlık: fırsat tespiti, fizibilite ve teklif dokümanı
+   • Yatırımcı/geliştirici: sermaye, satın alma, inşaat/tadilat ve işletme
+   • Getiri/şartlar: proje bazında müzakere edilir`
+      : `6. TOPLUM & EKONOMİK FAYDA
+   • Atıl mülkün yeniden kullanıma kazandırılması, yerel istihdam
+   • Cadde/çevre canlanması, regenerasyon hedefleriyle uyum
+   • Şeffaf teklif ve hızlı işlem kapasitesi`;
+    return `YATIRIM FIRSATI ÖNERİSİ (PROPOSAL)
+Fırsat Radarı • ${today}
+Hazırlayan: [Ad / Şirket] — Fırsat Tespit & Fizibilite
+Alıcı: ${alici}
+────────────────────────────────────────
+
+1. MÜLK
+   • Ad: ${d.title}
+   • Konum: ${d.town}, ${d.district}, East Sussex
+   • Mülk tipi: ${d.prop} | Fırsat tipi: ${d.opp}
+   • Durum: ${d.status} | Veri kaynağı: ${d.source}
+   • Büyüklük: ${d.size.toLocaleString("en-GB")} sqft | Rehber fiyat: ${fmt(d.price)}
+   • Rateable value: ${d.rateable?fmt(d.rateable):"—"} | Fırsat skoru: ${d.score}/100
+   • İlan tarihi: ${fmtDate(d.date)}${ddlTR}
+   • İlan/kaynak linki: ${d.link||"—"}
+
+2. NEDEN FIRSAT
+   ${d.why}
+
+3. ÖNERİLEN KULLANIM
+   ${useSuggest[d.prop]||"—"}
+
+4. KABA FİZİBİLİTE (temsilî)
+   • Satın alma            : ${fmt(f.purchase)}
+   • Tahmini tadilat       : ${fmt(f.refurb)}
+   • Edinim maliyeti (~%${f.acqPct}) : ${fmt(f.acq)}
+   • TOPLAM YATIRIM        : ${fmt(f.total)}
+   • Tahmini yıllık brüt gelir : ${fmt(f.income)}
+   • Brüt getiri           : ${f.gross.toFixed(1)}%
+   • Net getiri (~%${f.opexPct} gider) : ${f.netY.toFixed(1)}%
+   • Yaklaşık geri ödeme   : ${f.payback?f.payback.toFixed(1)+" yıl":"—"}
+
+5. SONRAKİ ADIMLAR
+   • Tapu ve planlama geçmişi kontrolü (Land Registry / konsey)
+   • Yerinde inceleme ve inşaat maliyet teyidi
+   • Satıcı/konsey ile ön görüşme ve teklif stratejisi${d.deadline?`
+   • DİKKAT: Son tarih ${fmtDate(d.deadline.date)} — ${ddlText(d.deadline.date)}`:""}
+
+${kapanis}
+
+${incBlockTR(d)}
+
+Not: Tüm rakamlar temsilîdir; teşvik uygunluğu başvuru şartlarına ve due diligence'a tabidir.`;
+  } else {
+    const audience=propState.aud==="ortak"?"Investor / Developer":"Relevant Council / Institution (asset owner)";
+    const closing=propState.aud==="ortak"
+      ? `6. DELIVERY MODEL
+   • Analysis: opportunity sourcing, feasibility and proposal
+   • Investor/developer: capital, acquisition, build/refurbishment and operation
+   • Returns/terms: negotiated per project`
+      : `6. COMMUNITY & ECONOMIC BENEFIT
+   • Brings a vacant asset back into use; supports local employment
+   • Revitalises the high street; aligns with regeneration objectives
+   • Transparent offer and ability to transact quickly`;
+    return `INVESTMENT OPPORTUNITY PROPOSAL
+Fırsat Radarı • ${today}
+Prepared by: [Name / Company] — Sourcing & Feasibility
+Recipient: ${audience}
+────────────────────────────────────────
+
+1. PROPERTY
+   • Name: ${d.title}
+   • Location: ${d.town}, ${d.district}, East Sussex
+   • Property type: ${d.prop} | Opportunity: ${d.opp}
+   • Status: ${d.status} | Data source: ${d.source}
+   • Size: ${d.size.toLocaleString("en-GB")} sqft | Guide price: ${fmt(d.price)}
+   • Rateable value: ${d.rateable?fmt(d.rateable):"—"} | Opportunity score: ${d.score}/100
+   • Listed: ${fmtDate(d.date)}${ddlEN}
+   • Listing/source link: ${d.link||"—"}
+
+2. WHY IT IS AN OPPORTUNITY
+   ${d.why}
+
+3. PROPOSED USE
+   ${useSuggest[d.prop]||"—"}
+
+4. INDICATIVE FEASIBILITY
+   • Purchase              : ${fmt(f.purchase)}
+   • Estimated refurb      : ${fmt(f.refurb)}
+   • Acquisition costs (~${f.acqPct}%) : ${fmt(f.acq)}
+   • TOTAL INVESTMENT      : ${fmt(f.total)}
+   • Estimated gross income: ${fmt(f.income)}
+   • Gross yield           : ${f.gross.toFixed(1)}%
+   • Net yield (~${f.opexPct}% costs) : ${f.netY.toFixed(1)}%
+   • Approx. payback       : ${f.payback?f.payback.toFixed(1)+" yrs":"—"}
+
+5. NEXT STEPS
+   • Title & planning history check (Land Registry / council)
+   • Site visit and build-cost verification
+   • Preliminary talks with seller/council and offer strategy${d.deadline?`
+   • NOTE: Deadline ${fmtDate(d.deadline.date)} — ${ddlText(d.deadline.date)}`:""}
+
+${closing}
+
+${incBlockEN(d)}
+
+Note: All figures are indicative; incentive eligibility is subject to application criteria and due diligence.`;
+  }
+}
+function paintProposal(){
+  const d=DATA.find(x=>x.id===propState.id);
+  const txt=proposalText(d);
+  showModal(`
+    <div class="mhead"><h3>Proposal — ${d.town}</h3><div class="sp"></div><button class="xbtn" onclick="closeModal()">✕</button></div>
+    <div class="mbody">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+        <div class="seg2"><button class="${propState.aud==='ortak'?'on':''}" onclick="setAud('ortak')">Yatırımcı / Geliştirici</button>
+          <button class="${propState.aud==='kurum'?'on':''}" onclick="setAud('kurum')">Konsey / Kurum</button></div>
+        <div class="seg2"><button class="${propState.lang==='tr'?'on':''}" onclick="setLang('tr')">Türkçe</button>
+          <button class="${propState.lang==='en'?'on':''}" onclick="setLang('en')">English</button></div>
+      </div>
+      <pre class="proposal" id="propText">${txt.replace(/</g,"&lt;")}</pre>
+    </div>
+    <div class="mfoot">
+      <button class="mbtn" onclick="copyProposal(event)">Kopyala</button>
+      <button class="mbtn" onclick="window.print()">Yazdır / PDF</button>
+      <button class="mbtn primary" onclick="closeModal()">Tamam</button>
+    </div>`);
+}
+function copyProposal(ev){
+  const t=document.getElementById("propText").innerText;
+  navigator.clipboard?.writeText(t).then(()=>{const b=ev.target,o=b.textContent;b.textContent="Kopyalandı ✓";setTimeout(()=>b.textContent=o,1500);});
+}
+
+/* ---------- kısa liste ---------- */
+function openShortlist(){
+  const items=DATA.filter(d=>shortlist.has(d.id));
+  const body=items.length
+    ? items.map(d=>`<div class="dl" style="grid-template-columns:1fr auto;align-items:center;margin:0 0 10px;border-bottom:1px solid var(--line);padding-bottom:10px">
+        <div><b>${d.title}</b><div class="loc">${d.town} · ${d.district} · ${fmt(d.price)} · skor ${d.score}${d.deadline?` · ⏳ ${fmtDate(d.deadline.date)}`:""}</div></div>
+        <button class="mbtn" onclick="openProposal(${d.id})">Proposal</button></div>`).join("")
+    : `<p style="color:var(--muted)">Henüz kısa listeye fırsat eklemediniz. Kartlardaki ☆ ile ekleyin.</p>`;
+  showModal(`
+    <div class="mhead"><h3>Kısa Liste (${items.length})</h3><div class="sp"></div><button class="xbtn" onclick="closeModal()">✕</button></div>
+    <div class="mbody">${body}</div>
+    <div class="mfoot"><button class="mbtn primary" onclick="closeModal()">Kapat</button></div>`);
+}
+
+/* ---------- iş birliği modeli ---------- */
+function openModel(){
+  showModal(`
+    <div class="mhead"><h3>İş Akışı</h3><div class="sp"></div><button class="xbtn" onclick="closeModal()">✕</button></div>
+    <div class="mbody">
+      <p style="margin-top:0;color:var(--muted)">Fırsat Radarı, tespitten anlaşmaya kadar akışı hızlandırır:</p>
+      <div class="steps">
+        <div class="step"><div class="n">1</div><h5>Tespit</h5><p>Açık/resmî verilerden atıl, ucuz, distressed ve kamu mülkleri.</p></div>
+        <div class="step"><div class="n">2</div><h5>Fizibilite</h5><p>Yatırım, getiri ve geri ödeme anında hesaplanır.</p></div>
+        <div class="step"><div class="n">3</div><h5>Proposal</h5><p>TR/EN, yatırımcıya veya kuruma özel teklif taslağı.</p></div>
+        <div class="step"><div class="n">4</div><h5>Sunum</h5><p>Kısa liste + son tarih takibi ile hızlı sunum.</p></div>
+        <div class="step"><div class="n">5</div><h5>Anlaşma</h5><p>Analiz+teklif hazır; yatırımcı/geliştirici sermaye, inşaat ve işletme ile ilerler.</p></div>
+      </div>
+      <p class="note">Bu demo örnek verilerle çalışır. Canlı sürümde veri hatları (Land Registry, PlanIt, Gazette, konsey varlık kayıtları, business-rates, auction) otomatik beslenir; her ilanın tarihi, son tarihi ve kaynak linki taşınır.</p>
+    </div>
+    <div class="mfoot"><button class="mbtn primary" onclick="closeModal()">Anladım</button></div>`);
+}
+
+/* ---------- belediye kaynakları (gerçek/canlı) ---------- */
+function openCouncil(){
+  showModal(`
+    <div class="mhead"><h3>🏛️ Belediye Kaynakları — Canlı Akış Temeli</h3><div class="sp"></div><button class="xbtn" onclick="closeModal()">✕</button></div>
+    <div class="mbody">
+      <p class="cap">En avantajlı edinim çoğu zaman belediyeden olur (surplus satış, peppercorn/Community Asset Transfer, High Street Rental Auction). Aşağıdaki kaynaklar <b>gerçek ve günceldir</b>; canlı sürümde otomatik taranıp ilana dönüştürülür. Listedeki <b style="color:#0f9d8f">● CANLI</b> kartlar bu kaynaklardan gelen gerçek örneklerdir.</p>
+      <div class="inclist">
+        <div class="incrow"><span class="incicon">🗂️</span><div><b>Rother DC — Varlık Kaydı (XLSX, 28 May 2025)</b> — tüm belediye mülkleri; adres, holding & occupancy status (boş = fırsat). <a href="https://rdcpublic.blob.core.windows.net/website-uploads/2025/06/Rother-Asset-List-Estates.xlsx" target="_blank" rel="noopener">indir ↗</a></div></div>
+        <div class="incrow"><span class="incicon">📄</span><div><b>Rother DC — Asset Disposal Policy + Open Space satışları</b> <a href="https://www.rother.gov.uk/business/land-and-property/disposal-of-open-space-land/" target="_blank" rel="noopener">aç ↗</a></div></div>
+        <div class="incrow"><span class="incicon">🏢</span><div><b>ESCC — Satılık/Kiralık mülkler</b> (şu an kiralık: Pacific House/Eastbourne, Sackville House & County Hall/Lewes; satılık: yok). <a href="https://www.eastsussex.gov.uk/your-council/about/property/sale-rent" target="_blank" rel="noopener">aç ↗</a></div></div>
+        <div class="incrow"><span class="incicon">🤝</span><div><b>Assets of Community Value (4 konsey)</b> — Community Right to Bid / peppercorn yolu: <a href="https://www.rother.gov.uk/business/assets-of-community-value/" target="_blank" rel="noopener">Rother</a> · <a href="https://www.lewes-eastbourne.gov.uk/assets-of-community-value" target="_blank" rel="noopener">Lewes/Eastbourne</a> · <a href="https://www.wealden.gov.uk/partnerships-and-localism/town-and-parish-councils-ordnance-survey-mapping/community-right-to-bid-assets-of-community-value/" target="_blank" rel="noopener">Wealden</a> · <a href="https://www.hastings.gov.uk/my-community/righttobid/" target="_blank" rel="noopener">Hastings</a></div></div>
+        <div class="incrow"><span class="incicon">⚖️</span><div><b>High Street Rental Auction</b> — 365+ gün boş birimlerde konsey 1–5 yıl kira açık artırması ('right to rent', yürürlük 2 Ara 2024). <a href="https://www.gov.uk/government/news/high-streets-to-be-revitalised-with-new-legal-powers" target="_blank" rel="noopener">gov.uk ↗</a></div></div>
+      </div>
+      <p class="note">İletişim: ESCC Estates — property.estates@eastsussex.gov.uk · Rother Estates — Taris de Mann 01424 787830. Canlı sürümde bu kaynaklar günlük taranır; yeni/boş/elden çıkan varlıklar otomatik ilana ve uyarıya dönüşür.</p>
+    </div>
+    <div class="mfoot"><button class="mbtn primary" onclick="closeModal()">Kapat</button></div>`);
+}
+
+/* ---------- teşvik & fon rehberi ---------- */
+function openFunds(){
+  const rows=Object.values(INCENTIVES).map(i=>`<div class="incrow"><span class="incicon">${i.icon}</span><div><b>${i.label}</b> — ${i.detail} <a href="${i.link}" target="_blank" rel="noopener">kaynak ↗</a></div></div>`).join("");
+  showModal(`
+    <div class="mhead"><h3>Teşvik & Fon Rehberi</h3><div class="sp"></div><button class="xbtn" onclick="closeModal()">✕</button></div>
+    <div class="mbody">
+      <p class="cap">Bölgeye uygun teşvik/fon türleri — uygunluk projeye ve başvuru şartlarına göre değişir. Her ilanın Detay ekranında o mülke uyan teşvikler gösterilir.</p>
+      <div class="inclist">${rows}</div>
+      <div class="sentiment" style="margin-top:14px"><b>Kamu görüşü (derleme):</b> Hastings'te ~4.000 kişilik Pride in Place istişaresi ve ~1.000 kişilik Public Realm görüşü boş binaların doldurulmasını, canlı town-centre'ı ve temiz sokakları öne çıkardı. Bexhill Neighbourhood Board ise town-centre işletme sürdürülebilirliğini ve Sidley'de istihdamı önceliklendirdi.</div>
+      <p class="note">Kaynaklar: gov.uk, East Sussex CC, Rother/Hastings BC, Let's Do Business, No Use Empty, Pride in Place istişare analizleri. Canlı sürümde her ilana konum-özel teşvik ve güncel konsey/public yorumları otomatik iliştirilir.</p>
+    </div>
+    <div class="mfoot"><button class="mbtn primary" onclick="closeModal()">Kapat</button></div>`);
+}
+
+/* ---------- harita görünümü ---------- */
+let currentView="list", map=null, markers=null;
+function setView(v){
+  currentView=v;
+  document.getElementById("results").style.display=(v==="list")?"grid":"none";
+  document.getElementById("map").style.display=(v==="map")?"block":"none";
+  document.querySelectorAll(".viewseg button").forEach(b=>b.classList.toggle("on", b.dataset.v===v));
+  if(v==="map") ensureMap();
+}
+function ensureMap(){
+  const el=document.getElementById("map");
+  if(typeof L==="undefined"){ el.innerHTML='<div class="mapwarn">Harita yüklenemedi — internet bağlantısı gerekiyor. Liste görünümü ve diğer tüm özellikler çalışır.</div>'; return; }
+  if(!map){
+    map=L.map(el,{scrollWheelZoom:true}).setView([50.86,0.35],10);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}).addTo(map);
+    markers=L.layerGroup().addTo(map);
+  }
+  refreshMarkers();
+  setTimeout(()=>map.invalidateSize(),60);
+}
+function refreshMarkers(){
+  if(!map||!markers) return;
+  markers.clearLayers();
+  const list=applyFilters(), pts=[];
+  list.forEach(d=>{
+    const ll=coordsOf(d); pts.push(ll);
+    const m=L.circleMarker(ll,{radius:9,weight:2,color:"#fff",fillColor:(d.score==null?"#0f9d8f":scoreHex(d.score)),fillOpacity:.95});
+    m.bindPopup(`<b>${d.title}</b><br>${d.town} · ${d.real?"Belediye (Canlı)":fmt(d.price)+" · skor "+d.score}${d.deadline?`<br>⏳ ${d.deadline.label}: ${fmtDate(d.deadline.date)} (${ddlText(d.deadline.date)})`:""}<br>
+      <a href="#" onclick="openDetail(${d.id});return false">Detay</a> · <a href="${gmaps(d)}" target="_blank" rel="noopener">Google Maps</a>`);
+    markers.addLayer(m);
+  });
+  if(pts.length){ try{ map.fitBounds(pts,{padding:[34,34],maxZoom:13}); }catch(e){} }
+}
+function openInMap(id){
+  closeModal(); setView("map");
+  const d=DATA.find(x=>x.id===id), ll=coordsOf(d);
+  if(map){ map.setView(ll,15); }
+}
+
+/* ---------- başlat ---------- */
+render();
+
+/* ---------- canlı veri (data.json) — GitHub Actions üretir ---------- */
+function _enrich(arr){ arr.forEach(function(d){
+  if(d.real){ d.link=d.url||d.link||""; if(!("deadline" in d)) d.deadline=null; return; }
+  d.link = d.link || SOURCE_LINK[d.source] || "";
+  if(d.deadline) return;
+  if(d.opp==="Müzayede (Auction)") d.deadline={label:"Müzayede tarihi", date:addDays(d.date,21)};
+  else if(d.source==="Gazette (Tasfiye)") d.deadline={label:"Mahkeme/teklif tarihi", date:addDays(d.date,17)};
+  else if(d.opp==="Kamu/Belediye Mülkü") d.deadline={label:"İlgi beyanı (EOI) son tarihi", date:addDays(d.date,32)};
+  else if(d.opp==="Arsa/Geliştirme") d.deadline={label:"Teklif daveti son tarihi", date:addDays(d.date,40)};
+  else d.deadline=null;
+}); }
+function _buildFilters(){
+  makeChecks("districtBox", DISTRICTS, "district");
+  makeChecks("oppBox", uniq(DATA.map(function(d){return d.opp;})).sort(), "opp");
+  makeChecks("propBox", uniq(DATA.map(function(d){return d.prop;})).sort(), "prop");
+  makeChecks("statusBox", uniq(DATA.map(function(d){return d.status;})).sort(), "status");
+  makeChecks("sourceBox", uniq(DATA.map(function(d){return d.source;})).sort(), "source");
+  var html="";
+  DISTRICTS.forEach(function(dd){ var towns=uniq(DATA.filter(function(x){return x.district===dd;}).map(function(x){return x.town;})).sort(); if(!towns.length) return;
+    html+='<div class="grp">'+dd+'</div>'+towns.map(function(t){return '<label class="chk"><input type="checkbox" data-f="town" value="'+t+'"> '+t+'</label>';}).join(""); });
+  document.getElementById("townBox").innerHTML=html;
+  document.getElementById("incBox").innerHTML=INC_TYPES.map(function(x){return '<label class="chk"><input type="checkbox" data-f="inc" value="'+x[0]+'"> '+x[1]+'</label>';}).join("");
+}
+(async function loadLive(){
+  try{
+    var r=await fetch("data.json",{cache:"no-store"}); if(!r.ok) return;
+    var live=await r.json(); var rows=Array.isArray(live)?live:(live.items||[]);
+    if(rows.length){
+      DATA=rows; _enrich(DATA); _buildFilters(); render();
+      var el=document.querySelector("header .demo-chip");
+      if(el){ el.textContent="CANLI"; el.style.background="#0f9d8f"; el.style.color="#fff";
+        el.title="data.json canli veri"+((!Array.isArray(live)&&live.generated)?(" - "+live.generated):""); }
+    }
+  }catch(e){}
+})();
+</script>
+</body>
+</html>

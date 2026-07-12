@@ -1,0 +1,5 @@
+[
+  {"paon": "14", "street": "Bohemia Road", "town": "Hastings", "price": 92000, "date": "2026-06-20", "property_type": "F", "category": "B"},
+  {"paon": "3", "street": "Marina", "town": "Bexhill-on-Sea", "price": 118000, "date": "2026-06-12", "property_type": "F", "category": "B"},
+  {"paon": "27", "street": "Terminus Road", "town": "Eastbourne", "price": 165000, "date": "2026-06-25", "property_type": "F", "category": "A"}
+]
